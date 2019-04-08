@@ -11,6 +11,9 @@ require_once 'include/db.php';
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$id]);
       $mec=$req->fetch(); 
+$req=$pdo->prepare('SELECT nom FROM informations WHERE entreprise=? AND equipe=? and type=?');
+$req->execute([$mec->entreprise],[$mec->equipe],["manager"]);
+$manager=$req->fetch(); 
 ?>
 
   <body>
@@ -45,21 +48,11 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
                                   <br>
                                   <br>
                             </tr>
-                            <tr>
-
-                                <td><a href="#">RESUME</a></td>
-                                <td><?php echo($mec->resume)?></td>
-                                
-                            </tr>
-                            
                         </table>
 
                     </div>
                     <div class="col-lg-6">
                         <table class="table">
-                            
-                            
-                            
                             <tr>
                                 <td><a href="#">NOM</a></td>
                                 <td>
@@ -80,42 +73,31 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
                                 </td>
                                 
                             </tr>
-                             <tr>
+                            <tr>
                                 <td><a href="#">EMAIL</a></td>
                                 <td><?php echo($mec->email)?>
                                 </td>
-                                
-                            </tr>
-                             <tr>
-                                <td><a href="#">DATE DE NAISSANCE</a></td>
-                                <td><?php echo($mec->date_naissance)?>
-                                </td>
-                                
                             </tr>
                             <tr>
-                                <td><a href="#">ADRESSE</a></td>
-                                <td><?php echo($mec->adresse)?>
+                                <td><a href="#">Entreprise</a></td>
+                                <td><?php echo($mec->entreprise)?>
                                 </td>
-                                
                             </tr>
                             <tr>
-                                <td><a href="#">CODE POSTAL</a></td>
-                                <td><?php echo($mec->cp)?>
+                                <td><a href="#">Numéro d'équipe</a></td>
+                                <td><?php echo($mec->équipe)?>
                                 </td>
-                                
-                            </tr><tr>
-                                <td><a href="#">PAYS</a></td>
-                                <td><?php echo($mec->pays)?>
-                                </td>
-                                
                             </tr>
                             <tr>
-                                <td><a href="#">TELEPHONE</a></td>
-                                <td><?php echo($mec->telephone)?>
+                                <td><a href="#">Nom manager</a></td>
+                                <td><?php echo($mec->manager)?>
                                 </td>
-                                
                             </tr>
                             <tr>
+                                <td><a href="#">Like reçus</a></td>
+                                <td><?php echo($mec->likes_reçus)?>
+                                </td>
+                            </tr>
                             
                         </table>
                     </div>
@@ -128,7 +110,7 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
             <div class="col-lg-6">
                 <section class="panel">
                     <header class="panel-heading">
-                        Compétences
+                        Compétences Acquises
                         <span class="tools pull-right">
                             <a href="javascript:;" class="fa fa-chevron-down"></a>
                          </span>
@@ -165,10 +147,15 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
     <div class="col-lg-6">
                 <section class="panel">
                     <header class="panel-heading">
-                        Centres d'intérêts
+                        Défis réalisé
                     </header>
                     <div class="panel-body">
                         <table class="table  table-hover general-table">
+                            <thead>
+                            <tr>
+                                <th> Nom</th>                                <th>Compétences acquises</th>
+                            </tr>
+                            </thead>
                            <tbody>
                                     <?php $interets=$mec->interets;
                                     $int=explode(",", $interets);
@@ -184,7 +171,7 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
                                        <td><a >Pas de centre d'intérêt</a></td>
                                         </tr>
                                     <?php }?>
-                                </tbody> 
+                            </tbody> 
                           
                         </table>
                     </div>
