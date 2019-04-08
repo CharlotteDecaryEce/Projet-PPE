@@ -1,6 +1,6 @@
 <?php
 
-$title="Mes connexions";
+$title="Mes collegues";
 require 'include/functions.php';
 include("include/header.inc.php"); 
 include("include/menu_haut.inc.php"); 
@@ -41,7 +41,7 @@ foreach ($id_envoie as $mec) {
                     <!--breadcrumbs start -->
                     <ul class="breadcrumb">
                         <li><a href="tableau_de_bord.php"><i class="fa fa-home"></i>Tableau de bord</a></li>
-                        <li class="active">Liste de mes connexions</li>
+                        <li class="active">Liste de mes collegues</li>
                     </ul>
                     <!--breadcrumbs end -->
                 </div>
