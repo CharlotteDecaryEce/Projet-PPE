@@ -8,25 +8,12 @@ include("include/menu_gauche.inc.php");
 
 $demandes=array();
 require_once 'include/db.php';
-$req=$pdo->prepare('SELECT * FROM relations WHERE (id_1= ? OR id_2= ?) ');
-$req->execute([$_SESSION['auth']->id,$_SESSION['auth']->id]);
-$id_envoie=$req->fetchAll();
+$entreprise=$_SESSION['auth']->entreprise;
+$equipe=$_SESSION['auth']->equipe;
+$req=$pdo->prepare('SELECT * FROM informations WHERE entreprise=? AND equipe=? ');
+$req->execute([$entreprise],[$equipe]);
+$collegues=$req->fetchAll();
 $i=0;
-foreach ($id_envoie as $mec) {
-  if($mec->id_1 != $_SESSION['auth']->id)
-  {
-    $req=$pdo->prepare('SELECT * FROM informations WHERE id= ? ');
-    $req->execute([$mec->id_1]);
-    $demandes[$i]=$req->fetch();
-    $i++;
-  }
-  else{
-    $req=$pdo->prepare('SELECT * FROM informations WHERE id= ? ');
-    $req->execute([$mec->id_2]);
-    $demandes[$i]=$req->fetch();
-    $i++;
-  }
-}
 
 ?>
 
@@ -63,12 +50,12 @@ foreach ($id_envoie as $mec) {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php  if($demandes!=""):
-                                foreach ($demandes as $rech) :?>
+                                <?php  if($collegues!=""):
+                                foreach ($collegues as $col) :?>
                                 <tr>
-                                    <th><a href=<?php echo("profil_info.php?id=".$rech->id)?> ><?php echo($rech->prenom)?></a></th>
-                                    <td><?php echo($rech->nom)?></td>
-                                    <td><?php echo($rech->username)?></td>
+                                    <th><a href=<?php echo("profil_info.php?id=".$col->id)?> ><?php echo($col->prenom)?></a></th>
+                                    <td><?php echo($col->nom)?></td>
+                                    <td><?php echo($col->username)?></td>
                                 </tr>
                                 <?php endforeach; endif; ?>
                                 </tbody>
