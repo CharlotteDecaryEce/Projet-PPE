@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Apr 08, 2019 at 01:05 PM
--- Server version: 5.7.23
--- PHP Version: 7.2.10
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  lun. 08 avr. 2019 à 13:19
+-- Version du serveur :  5.7.24
+-- Version de PHP :  7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ppe`
+-- Base de données :  `ppe`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `defis`
+-- Structure de la table `defis`
 --
 
 DROP TABLE IF EXISTS `defis`;
@@ -34,14 +34,23 @@ CREATE TABLE IF NOT EXISTS `defis` (
   `nom` text NOT NULL,
   `resume` longtext NOT NULL,
   `competences_acquises` set('Optimisme','Confiance','Sociabilite','Empathie','Communication','Efficacite','Gestion_du_stress','Creativite','Audace','Motivation','Visualisation','Présence','Adaptabilite','Curiosite','Disponibilite') NOT NULL,
-  `duree` datetime NOT NULL,
+  `duree` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `defis`
+--
+
+INSERT INTO `defis` (`id`, `nom`, `resume`, `competences_acquises`, `duree`) VALUES
+(1, 'Bienvenu!', 'Comme tu le sais, une entreprise est faite d\'allers et venues. Pour inclure tout le monde et faire en sorte que l\'ambiance de travail soit la plus seine possible, tu as deux semaines pour déjeuner avec un collègue qui est l\'entreprise depuis moins de 6 mois. Il se sentira valorisé et ce déjeuner sera l\'occasion pour vous deux de mieux vous connaitre.', 'Disponibilite', 10),
+(3, 'Bien joué!', 'Savoir relever les points positifs de son équipe et valoriser leur travail est une force et une grande source de motivation pour avancer. C\'est pourquoi, tu dois, lors de la prochaine réunion que tu animes, pendant les 10-15 premières minutes, énumérer l\'ensemble des bons points. Ceux qui ont permis de conclure un contrat, faire avancer une négociation, une progression significative dans un projet et bien d\'autres. Tous points positifs et valorisants le travail des autres est bon à être dit haut et fort! ', 'Motivation', 10),
+(4, 'Let\'s go out ', 'Pourquoi se cantonner à ses collègues de travail au travail? Rien de mieux que vous connaître sous un autre angle et dans un autre atmosphère que celui des locaux de travail. Une bonne ambiance et une relation sincère en dehors du lieu de travail est un grand facteur de réussite dans vos objectifs professionnels. Tu as 1 mois pour organiser une activité extérieure avec minimum 15 de tes collègues. Pour t\'aider tu trouveras ici quelques idées: afterwork dans un bar, escape game, cours de cuisine, cours d\'improvisation théatrale... ', 'Sociabilite', 20);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `informations`
+-- Structure de la table `informations`
 --
 
 DROP TABLE IF EXISTS `informations`;
@@ -65,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `informations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `informations`
+-- Déchargement des données de la table `informations`
 --
 
 INSERT INTO `informations` (`id`, `likes_recus`, `likes_distrib`, `defis_realises`, `defis_en_cours`, `entreprise`, `equipe`, `type`, `prenom`, `nom`, `competences`, `photo`, `username`, `password`, `competences_acquises`) VALUES
@@ -75,7 +84,7 @@ INSERT INTO `informations` (`id`, `likes_recus`, `likes_distrib`, `defis_realise
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifications`
+-- Structure de la table `notifications`
 --
 
 DROP TABLE IF EXISTS `notifications`;
@@ -90,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `notifications` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `relations`
+-- Structure de la table `relations`
 --
 
 DROP TABLE IF EXISTS `relations`;
@@ -102,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `relations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `relations`
+-- Déchargement des données de la table `relations`
 --
 
 INSERT INTO `relations` (`id`, `id_1`, `id_2`) VALUES
