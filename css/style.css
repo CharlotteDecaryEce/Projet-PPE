@@ -269,7 +269,7 @@ ul.sidebar-menu li a span {
     display:inline-block;
 }
 ul.sidebar-menu li a {
-    color:#aeb2b7;
+    color:#fff;
     text-decoration:none;
     display:block;
     padding:18px 0 18px 25px;
@@ -283,7 +283,7 @@ ul.sidebar-menu li a {
 }
 ul.sidebar-menu li a.active,ul.sidebar-menu li a:hover,ul.sidebar-menu li a:focus {
     background:#28282e;
-    color:#4a69bd;
+    color:#fff;
     display:block;
     -webkit-transition:all 0.3s ease;
     -moz-transition:all 0.3s ease;
@@ -296,10 +296,10 @@ ul.sidebar-menu li a i {
     padding-right:6px;
 }
 ul.sidebar-menu li a:hover i,ul.sidebar-menu li a:focus i {
-    color:#4a69bd;
+    color:#fff;
 }
 ul.sidebar-menu li a.active i {
-    color:#4a69bd;
+    color:#fff;
 }
 .mail-info,.mail-info:hover {
     margin:-3px 6px 0 0;
@@ -386,7 +386,7 @@ ul.top-menu > li > a {
     padding-right:8px !important;
 }
 ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
-    background:#4a69bd;
+    background:#fff;
     text-decoration:none;
     color:#f6f6f6 !important;
     padding-right:8px !important;
@@ -555,7 +555,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 }
 
 .top-nav .icon-user .username {
-    color: #555555;
+    color: #fff;
     font-size: 13px;
     position: relative;
     top: -5px;
@@ -609,7 +609,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 }
 .top-nav .username {
     font-size:13px;
-    color:#F6F6F6;
+    color:#fff;
 }
 .top-nav ul.top-menu>li>a {
     border-radius:100px;
@@ -640,8 +640,8 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 }
 .top-nav ul.top-menu>li>a:hover,.top-nav ul.top-menu>li>a:focus {
     border:1px solid #f6f6f6;
-    background:#341f97 !important;
-    color: #F1F2F7 ;
+    background:#07234D !important;
+    color: #fff ;
     border-radius:100px;
     -webkit-border-radius:100px;
 }
@@ -712,7 +712,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     float:left;
     margin-top:23px;
     margin-left:-15px;
-    background:#4a69bd;
+    background:#fff;
     border-radius:50%;
     -webkit-border-radius:50%;
     width:32px;
@@ -725,7 +725,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     display:inline-block;
     font-size:15px;
     padding:8px 8px 8px 9px;
-    color: #341f97;
+    color: #07234D;
 }
 .sidebar-toggle-box:hover {
     background:#F6F6F6;
@@ -756,7 +756,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 }
 .toggle-right-box {
     float:left;
-    background:#f6f6f6;
+    background:#fff;
     border-radius:50%;
     -webkit-border-radius:50%;
     width:35px;
@@ -777,7 +777,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 }
 /*right sidebar*/
 .right-sidebar {
-    background:#32323A;
+    background:#fff;
     width:240px;
     position:fixed;
     height:100%;
@@ -1911,14 +1911,14 @@ a.mail-dropdown {
     padding:20px;
 }
 .btn-compose {
-    background:#4a69bd;
+    background:#07234D;
     padding:12px 0;
     text-align:center;
     width:100%;
     color:#fff;
 }
 .btn-compose:hover,.btn-compose:focus {
-    background:#d9edf7;
+    background:#07234D;
     color:#fff;
 }
 ul.inbox-nav {
@@ -2021,7 +2021,7 @@ ul.labels-info li a i {
 .inbox-head .sr-btn {
     height:40px;
     border:none;
-    background:#00a6b2;
+    background:#07234D;
     color:#fff;
     padding:0 20px;
     border-radius:0 4px 4px 0;
@@ -2345,15 +2345,15 @@ ul.inbox-pagination li {
     height:160px;
     border-radius:50%;
     -webkit-border-radius:50%;
-    border:10px solid #f1f2f7;
+    border:10px solid #07234D;
     margin-top:20px;
 }
 .profile-information .profile-desk {
-    border-right:1px solid #ddd;
+    border-right:1px solid #07234D;
     padding-right:30px;
 }
 .profile-information .profile-desk h1 {
-    color:#4a69bd;
+    color:#07234D;
     font-size:24px;
     font-weight:bold;
     margin-bottom:0;
@@ -2363,7 +2363,7 @@ ul.inbox-pagination li {
     display:inline-block;
 }
 .profile-information .profile-statistics h1 {
-    color:#757575;
+    color:#07234D;
     font-size:24px;
     font-weight:400;
     margin-bottom:5px;
@@ -2381,7 +2381,7 @@ ul.inbox-pagination li {
     list-style: none;
 }
 .profile-information .profile-statistics ul li a {
-    background:#f6f6f6;
+    background:#07234D;
     text-align:center;
     border-radius:50%;
     -webkit-border-radius:50%;
@@ -2391,11 +2391,11 @@ ul.inbox-pagination li {
     float:left;
 }
 .profile-information .profile-statistics ul li a:hover {
-    color: #4a69bd;
+    color: #07234D;
 }
 /*-----*/
 .profile-nav .user-heading {
-    color:#fff;
+    color:#07234D;
     border-radius:4px 4px 0 0;
     -webkit-border-radius:4px 4px 0 0;
     padding:30px;
@@ -2450,7 +2450,7 @@ ul.inbox-pagination li {
 .profile-nav ul>li>a>i {
     font-size:16px;
     padding-right:10px;
-    color:#bcb3aa;
+    color:#07234D;
 }
 .r-activity {
     margin:6px 0 0;
@@ -2596,7 +2596,7 @@ ul.inbox-pagination li {
 }
 /*profile contact*/
 .prf-contacts h2 {
-    color:#4a69bd;
+    color:#07234D;
     font-size:16px;
     margin-top:0;
     text-transform:uppercase;
@@ -2755,8 +2755,8 @@ ul.amounts li {
 }
 /*panel heading color*/
 .panel-primary>.panel-heading.navyblue {
-    background-color:#2A3542;
-    border-color:#2A3542;
+    background-color:#07234D;
+    border-color:#07234D;
     color: #FFFFFF;
 }
 /*table*/
@@ -2843,7 +2843,7 @@ ul.amounts li {
     width:100%;
 }
 .fc-state-default,.fc-state-default .fc-button-inner {
-    background:#F3F3F3 !important;
+    background:#07234D !important;
     border-color:#DDDDDD;
     border-style:none solid;
     color:#646464;
@@ -2960,10 +2960,10 @@ ul.amounts li {
     border-radius:0;
 }
 .panel-heading .nav>li>a {
-    color:#898989;
+    color:#07234D;
 }
 .panel-heading .nav>li.active>a,.panel-heading .nav>li>a:hover {
-    color:#4a69bd;
+    color:#07234D;
     background:#fff;
 }
 .panel-heading .nav>li:first-child.active>a,.panel-heading .nav>li:first-child>a:hover {
@@ -3084,7 +3084,7 @@ ul.amounts li {
     border:none;
 }
 .btn.btn-info.dropdown-toggle {
-    border-left: 1px solid #1fadea;
+    border-left: 1px solid #fff;
 }
 /*custom checkox & radio btn*/
 .icheck div,.icheck .disabled {
@@ -4267,7 +4267,7 @@ tr.odd.gradeX td.sorting_1,tr.even.gradeX td.sorting_1,table.display tr.even.gra
     transition:all 0.3s ease-in-out 0s;
 }
 .breadcrumbs-alt a:before {
-    border-color:#E0E1E7 #E0E1E7 #E0E1E7 rgba(0,0,0,0);
+    border-color:#07234D #07234D #07234D rgba(0,0,0,0);
     border-style:solid;
     border-width:1.5em 0 1.7em 1em;
     content:"";
@@ -4279,7 +4279,7 @@ tr.odd.gradeX td.sorting_1,tr.even.gradeX td.sorting_1,table.display tr.even.gra
 }
 .breadcrumbs-alt a:after {
     border-bottom:1.5em solid rgba(0,0,0,0);
-    border-left:1em solid #E0E1E7;
+    border-left:1em solid #07234D;
     border-top:1.5em solid rgba(0,0,0,0);
     content:"";
     margin-top:-1.5em;
@@ -4289,7 +4289,7 @@ tr.odd.gradeX td.sorting_1,tr.even.gradeX td.sorting_1,table.display tr.even.gra
     transition:all 0.3s ease-in-out 0s;
 }
 .breadcrumbs-alt a {
-    background:#E0E1E7;
+    background:#07234D;
     color:#444444;
     float:left;
     font-size:12px;
@@ -4300,7 +4300,7 @@ tr.odd.gradeX td.sorting_1,tr.even.gradeX td.sorting_1,table.display tr.even.gra
 }
 /*active and hover*/
 .breadcrumbs-alt a:hover:before,.breadcrumbs-alt a.current:before {
-    border-color:#4a69bd #4a69bd #4a69bd rgba(0,0,0,0);
+    border-color:#07234D #07234D #07234D rgba(0,0,0,0);
     border-style:solid;
     border-width:1.5em 0 1.7em 1em;
     content:"";
@@ -4312,7 +4312,7 @@ tr.odd.gradeX td.sorting_1,tr.even.gradeX td.sorting_1,table.display tr.even.gra
 }
 .breadcrumbs-alt a:hover:after,.breadcrumbs-alt a.current:after {
     border-bottom:1.5em solid rgba(0,0,0,0);
-    border-left:1em solid #4a69bd;
+    border-left:1em solid #07234D;
     border-top:1.5em solid rgba(0,0,0,0);
     content:"";
     margin-top:-1.5em;
@@ -4322,7 +4322,7 @@ tr.odd.gradeX td.sorting_1,tr.even.gradeX td.sorting_1,table.display tr.even.gra
     transition:all 0.3s ease-in-out 0s;
 }
 .breadcrumbs-alt a:hover,.breadcrumbs-alt a.current {
-    background:#4a69bd;
+    background:##07234D;
     color:#fff;
     float:left;
     font-size:12px;
