@@ -37,7 +37,7 @@ $nb_comp=count($_SESSION['auth']->competences);
                                         </a><br><br>
 
                                         <a href="modification_information_competences.php" class="btn btn-compose">
-                                            Compétences
+                                            Softskills
                                         </a><br><br>
                                         <a href="modification_information_centres_d'interets.php" class="btn btn-compose">
                                             Centre d'intérêts
@@ -81,7 +81,7 @@ $nb_comp=count($_SESSION['auth']->competences);
                                     }
                                     ?>
                                <h1><?php echo $nb_comp ?></h1>
-                               <p>Compétences</p>
+                               <p>Softskills</p>
                                <h1><?php echo $nb_interet ?></h1>
                                <p>Centres d'interet</p>
                            </div>
