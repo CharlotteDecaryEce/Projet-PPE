@@ -40,7 +40,7 @@
                     <li <?php if($page == "defis_en_attente.php" ){echo 'class="active"';} ?>><a href="defis_en_attente.php">Mes défis en attente</a></li>
                 </ul>
                 <ul class="sub">
-                    <li <?php if($page == "defis_realises.php" ){echo 'class="active"';} ?>><a href="defis_realises".php">Mes défis en cours</a></li>
+                    <li <?php if($page == "defis_realises.php" ){echo 'class="active"';} ?>><a href="defis_realises".php">Mes défis réalisés</a></li>
                 </ul>
             </li>
         </ul></div>        
