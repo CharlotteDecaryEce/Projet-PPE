@@ -14,6 +14,11 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
 $req=$pdo->prepare('SELECT nom FROM informations WHERE entreprise=? AND equipe=? and type=?');
 $req->execute([$mec->entreprise],[$mec->equipe],["manager"]);
 $manager=$req->fetch(); 
+
+$req=$pdo->prepare('SELECT defis_realises FROM informations WHERE id=?');
+$req->execute([$id]);
+$defis=$req->fetch();
+
 ?>
 
   <body>
@@ -74,28 +79,23 @@ $manager=$req->fetch();
                                 
                             </tr>
                             <tr>
-                                <td><a href="#">EMAIL</a></td>
-                                <td><?php echo($mec->email)?>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td><a href="#">Entreprise</a></td>
                                 <td><?php echo($mec->entreprise)?>
                                 </td>
                             </tr>
                             <tr>
                                 <td><a href="#">Numéro d'équipe</a></td>
-                                <td><?php echo($mec->équipe)?>
+                                <td><?php echo($mec->equipe)?>
                                 </td>
                             </tr>
                             <tr>
                                 <td><a href="#">Nom manager</a></td>
-                                <td><?php echo($mec->manager)?>
+                                <td><?php echo($manager)?>
                                 </td>
                             </tr>
                             <tr>
                                 <td><a href="#">Like reçus</a></td>
-                                <td><?php echo($mec->likes_reçus)?>
+                                <td><?php echo($mec->likes_recus)?>
                                 </td>
                             </tr>
                             
@@ -117,13 +117,8 @@ $manager=$req->fetch();
                     </header>
                     <div class="panel-body">
                         <table class="table  table-hover general-table">
-                            <thead>
-                            <tr>
-                                <th> Nom</th>                                <th></th>
-                            </tr>
-                            </thead>
                             <tbody>
-                                    <?php $competences=$mec->competences;
+                                    <?php $competences=$mec->competences_acquises;
                                     $comp=explode(",", $competences);
                                      if(!empty($competences)){
                                      foreach($comp as $c): ?>
@@ -134,7 +129,7 @@ $manager=$req->fetch();
                                     }
                                     else{?>
                                     <tr>
-                                       <td><a >Pas de compétences</a></td>
+                                       <td><a >Pas de compétences acquises</a></td>
                                         </tr>
                                     <?php }?>
                                 </tbody>
@@ -157,20 +152,22 @@ $manager=$req->fetch();
                             </tr>
                             </thead>
                            <tbody>
-                                    <?php $interets=$mec->interets;
-                                    $int=explode(",", $interets);
-                                     if(!empty($interets)){
-                                     foreach($int as $c): ?>
-                                       <tr>
-                                       <td><a ><?php echo $c; ?></a></td>
-                                        </tr>
-                                    <?php endforeach; 
-                                    }
-                                    else{?>
-                                    <tr>
-                                       <td><a >Pas de centre d'intérêt</a></td>
-                                        </tr>
-                                    <?php }?>
+                                <?php if(!empty($defis)){
+                                    $int=explode(",", $defis);
+                                    foreach($int as $def): 
+                                        $req=$pdo->prepare('SELECT nom FROM defis WHERE id=?');
+                                        $req->execute([$def]);
+                                        $mon_def=$req->fetch();
+                                        $req=$pdo->prepare('SELECT competences_acquises FROM defis WHERE id=?');
+                                        $req->execute([$def]);
+                                        $comp_def=$req->fetch();
+                                        ?><tr>
+                                          <td><a ><?php echo $mon_def; ?></a></td>
+                                          </tr><?php
+                                    endforeach; 
+                                }else{
+                                    echo "Pas de défis réalisé";
+                                }?>
                             </tbody> 
                           
                         </table>
