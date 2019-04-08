@@ -6,30 +6,19 @@ include("include/header.inc.php");
 include("include/menu_haut.inc.php"); 
 include("include/menu_gauche.inc.php"); 
 
-$demandes=array();
 require_once 'include/db.php';
-$req=$pdo->prepare('SELECT * FROM relations WHERE (id_1= ? OR id_2= ?) ');
-$req->execute([$_SESSION['auth']->id,$_SESSION['auth']->id]);
-$id_envoie=$req->fetchAll();
-$i=0;
-foreach ($id_envoie as $mec) {
-  if($mec->id_1 != $_SESSION['auth']->id)
-  {
-    $req=$pdo->prepare('SELECT * FROM informations WHERE id= ? ');
-    $req->execute([$mec->id_1]);
-    $demandes[$i]=$req->fetch();
-    $i++;
-  }
-  else{
-    $req=$pdo->prepare('SELECT * FROM informations WHERE id= ? ');
-    $req->execute([$mec->id_2]);
-    $demandes[$i]=$req->fetch();
-    $i++;
-  }
-}
+$req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
+      //$req->execute([$_SESSION['auth']->id]);
+      $req->execute(['19']);
+      $mec=$req->fetch(); 
+      
+$req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
+      $req->execute([$mec->defis_en_cours]);
+      $defis_en_cours=$req->fetch(); 
+
+
 
 ?>
-
 <body>
 
 
@@ -41,7 +30,7 @@ foreach ($id_envoie as $mec) {
                     <!--breadcrumbs start -->
                     <ul class="breadcrumb">
                         <li><a href="tableau_de_bord.php"><i class="fa fa-home"></i>Tableau de bord</a></li>
-                        <li class="active">Liste de mes défis en attente</li>
+                        <li class="active">Mon défis en cours</li>
                     </ul>
                     <!--breadcrumbs end -->
                 </div>
@@ -50,26 +39,42 @@ foreach ($id_envoie as $mec) {
             	<div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Liste de mes défis réalisés
+                            Mon défis en cours
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
                                 <thead>
+                                <div class="row">
+                                
                                 <tr>
+                                <div class="col-lg-3">
                                     <th>Intitulé</th>
+                                    </div>
+                                    <div class="col-lg-2">
                                     <th>Résumé</th>
+                                    </div>
+                                    <div class="col-lg-3">
                                     <th>Compétence apportée</th>
+                                    </div>
+                                    <div class="col-lg-4">
+                                    <th>Durée (en jours)</th>
+                                    </div>
                                 </tr>
+                                </div>
                                 </thead>
                                 <tbody>
-                                <?php  if($demandes!=""):
-                                foreach ($demandes as $rech) :?>
-                                <tr>
-                                    <!--<th><a href=<?php echo("profil_info.php?id=".$rech->id)?> ><?php echo($rech->prenom)?></a></th>-->
-                                    <td><?php echo($rech->nom)?></td>
-                                    <td><?php echo($rech->username)?></td>
-                                </tr>
-                                <?php endforeach; endif; ?>
+                                
+                                <td><?php echo($defis_en_cours->nom)?></td>
+                                
+                                <td><?php echo($defis_en_cours->resume)?></td>
+                                
+                                <td><?php echo($defis_en_cours->competences_acquises)?></td>
+                               
+                                <td><?php echo($defis_en_cours->duree)?></td>
+                                
+
+                        
+                               
                                 </tbody>
                             </table>
                         </div>
