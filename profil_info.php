@@ -12,9 +12,8 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$id]);
       $mec=$req->fetch();
 
-$mana='manager';
 $req=$pdo->prepare('SELECT * FROM informations WHERE (entreprise=? AND equipe=? AND type=?)');
-$req->execute([$mec->entreprise],[$mec->equipe],[$mana]);
+$req->execute([$mec->entreprise,$mec->equipe,"manager"]);
 $manager=$req->fetch(); 
 
 ?>

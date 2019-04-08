@@ -11,7 +11,7 @@ require_once 'include/db.php';
 $entreprise=$_SESSION['auth']->entreprise;
 $equipe=$_SESSION['auth']->equipe;
 $req=$pdo->prepare('SELECT * FROM informations WHERE entreprise=? AND equipe=? ');
-$req->execute([$entreprise],[$equipe]);
+$req->execute([$entreprise,$equipe]);
 $collegues=$req->fetchAll();
 $i=0;
 
