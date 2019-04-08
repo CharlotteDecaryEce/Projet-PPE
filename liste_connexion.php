@@ -37,7 +37,7 @@ $i=0;
             	<div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Striped Table
+                            Mon équipe
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
@@ -47,6 +47,7 @@ $i=0;
                                     <th>Prénom</th>
                                     <th>Nom</th>
                                     <th>Pseudo</th>
+                                    <th>Fonction</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -56,6 +57,7 @@ $i=0;
                                     <th><a href=<?php echo("profil_info.php?id=".$col->id)?> ><?php echo($col->prenom)?></a></th>
                                     <td><?php echo($col->nom)?></td>
                                     <td><?php echo($col->username)?></td>
+                                    <td><?php echo($col->type)?></td>
                                 </tr>
                                 <?php endforeach; endif; ?>
                                 </tbody>

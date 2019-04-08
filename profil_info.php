@@ -16,6 +16,10 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE (entreprise=? AND equipe=? 
 $req->execute([$mec->entreprise,$mec->equipe,"manager"]);
 $manager=$req->fetch(); 
 
+$req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
+      $req->execute([$_SESSION['auth']->id]);
+      $moi=$req->fetch();
+$like_a_distrib=$moi->likes_distrib;
 ?>
 
   <body>
@@ -154,17 +158,17 @@ $manager=$req->fetch();
                                 if(!empty($defis)){
                                     $int=explode(",", $defis);
                                     foreach($int as $def): 
-                                        $req=$pdo->prepare('SELECT nom FROM defis WHERE id=?');
+                                        $req=$pdo->prepare('SELECT * FROM defis WHERE id=?');
                                         $req->execute([$def]);
                                         $mon_def=$req->fetch();
-                                        $req=$pdo->prepare('SELECT competences_acquises FROM defis WHERE id=?');
-                                        $req->execute([$def]);
-                                        $comp_def=$req->fetch();
                                         ?><tr>
-                                          <td><a ><?php echo $mon_def; ?></a></td>
-                                          <td><a ><?php echo $comp_def; ?></a></td>
-                                          <td><a href=<?php echo("liker_defis.php?id=".$id); ?>><i class="fa fa-thumbs-up"></i></a></td>
-                                          </tr><?php
+                                          <td><a ><?php echo $mon_def->nom; ?></a></td>
+                                          <td><a ><?php echo $mon_def->competences_acquises; ?></a></td>
+                                          <?php if($like_a_distrib !='0'){?>
+                                            <td><a href=<?php echo("liker_defis.php?id=".$id); ?>><i class="fa fa-thumbs-up"></i></a></td>
+                                            <?php }?>
+                                          </tr>
+                                          <?php
                                     endforeach; 
                                 }else{?>
                                     <tr>
