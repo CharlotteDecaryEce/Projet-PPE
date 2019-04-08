@@ -10,14 +10,12 @@ $id=$_GET['id'];
 require_once 'include/db.php';
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$id]);
-      $mec=$req->fetch(); 
-$req=$pdo->prepare('SELECT nom FROM informations WHERE entreprise=? AND equipe=? and type=?');
-$req->execute([$mec->entreprise],[$mec->equipe],["manager"]);
-$manager=$req->fetch(); 
+      $mec=$req->fetch();
 
-$req=$pdo->prepare('SELECT defis_realises FROM informations WHERE id=?');
-$req->execute([$id]);
-$defis=$req->fetch();
+$mana='manager';
+$req=$pdo->prepare('SELECT * FROM informations WHERE (entreprise=? AND equipe=? AND type=?)');
+$req->execute([$mec->entreprise],[$mec->equipe],[$mana]);
+$manager=$req->fetch(); 
 
 ?>
 
@@ -90,7 +88,7 @@ $defis=$req->fetch();
                             </tr>
                             <tr>
                                 <td><a href="#">Nom manager</a></td>
-                                <td><?php echo($manager)?>
+                                <td><?php echo($manager->prenom.' '.$manager->nom)?>
                                 </td>
                             </tr>
                             <tr>
@@ -152,7 +150,9 @@ $defis=$req->fetch();
                             </tr>
                             </thead>
                            <tbody>
-                                <?php if(!empty($defis)){
+                                <?php 
+                                $defis=$mec->defis_realises;
+                                if(!empty($defis)){
                                     $int=explode(",", $defis);
                                     foreach($int as $def): 
                                         $req=$pdo->prepare('SELECT nom FROM defis WHERE id=?');
@@ -165,8 +165,10 @@ $defis=$req->fetch();
                                           <td><a ><?php echo $mon_def; ?></a></td>
                                           </tr><?php
                                     endforeach; 
-                                }else{
-                                    echo "Pas de défis réalisé";
+                                }else{?>
+                                    <tr>
+                                       <td><a >Pas de défis réalisés</a></td>
+                                    </tr><?php
                                 }?>
                             </tbody> 
                           
