@@ -5,7 +5,7 @@ include("include/header.inc.php");
 include("include/menu_haut.inc.php"); 
 include("include/menu_gauche.inc.php"); 
 
-$all_comp= array('Resolution de problemes','Confiance','Intelligence Emotionelle','Empathie','Communication','Gestion du temps','Gestion du stress','Creativite','Esprit d entreprendre','Audace','Motivation','Visualisation','Présence','Sens du collectif','Curiosite');
+$all_comp= array('Resolution de problemes','Confiance','Intelligence Emotionelle','Empathie','Communication','Gestion du temps','Gestion du stress','Creativite','Esprit d entreprendre','Audace','Motivation','Visualisation','Presence',"Sens du collectif",'Curiosite');
 
 if(!empty($_POST)){
     require_once 'include/db.php';
