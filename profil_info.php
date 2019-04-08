@@ -16,6 +16,10 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE (entreprise=? AND equipe=? 
 $req->execute([$mec->entreprise,$mec->equipe,"manager"]);
 $manager=$req->fetch(); 
 
+$req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
+      $req->execute([$_SESSION['auth']->id]);
+      $moi=$req->fetch();
+$like_a_distrib=$moi->likes_distrib;
 ?>
 
   <body>
@@ -160,7 +164,7 @@ $manager=$req->fetch();
                                         ?><tr>
                                           <td><a ><?php echo $mon_def->nom; ?></a></td>
                                           <td><a ><?php echo $mon_def->competences_acquises; ?></a></td>
-                                          <?php if($_SESSION['auth']->likes_distrib !=0){?>
+                                          <?php if($like_a_distrib !='0'){?>
                                             <td><a href=<?php echo("liker_defis.php?id=".$id); ?>><i class="fa fa-thumbs-up"></i></a></td>
                                             <?php }?>
                                           </tr>
