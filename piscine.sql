@@ -43,9 +43,14 @@ CREATE TABLE IF NOT EXISTS `commentaires` (
 CREATE TABLE IF NOT EXISTS `emploi` (
   `intitule` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
+  `avantages` varchar(255) NOT NULL,
+  `salaire` varchar(255) NOT NULL,
+  `secteur` varchar(255) NOT NULL,
+  `langues` varchar(255) NOT NULL,
   `lieu` varchar(255) NOT NULL,
   `diplome` varchar(255) NOT NULL,
   `qualites` varchar(255) NOT NULL,
+  `exigences` varchar(255) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
@@ -55,13 +60,13 @@ CREATE TABLE IF NOT EXISTS `emploi` (
 --
 
 INSERT INTO `emploi` (`intitule`, `type`, `avantages`, `salaire`, `secteur`, `langues`, `lieu`, `diplome`, `qualites`, `exigences`, `id`) VALUES
-('Vendeur', 'CDD', 'Paris', 'Pas de diplome requis', 'Sociable, aimable', 1),
-('Responsable des ventes', 'CDD', 'Paris', 'Pas de diplome requis', 'Sociable, aimable', 2),
-('Freelance content researcher', 'Stage', 'Paris', 'Grandes Ecoles',' maitrise des langues', 3),
-('Recruteur de donateur', 'CDI','Paris', 'Pas de diplome requis', 'Esprit equipe', 4),
-('Office manager', 'CDD Temps plein', 'Paris', 'BTS', 'Bilingue', 5),
-('Startup objets connectés', 'Stage', 'Paris', 'Grandes ecoles ingénieurs', 'Motivé', 6),
-('', '', '', '', '','', 7);
+('Vendeur', 'CDD', 'Tickets restaurant', '10euros de l''heure', 'Vente', 'Francais, anglais', 'Paris', 'Pas de diplome requis', 'Sociable, aimable', 'Non', 1),
+('Responsable des ventes', 'CDD', 'Tickets restaurant et remboursement pass navigo', '10euros de l''heure', 'Vente', 'Francais, anglais', 'Paris', 'Pas de diplome requis', 'Sociable, aimable', 'Non', 2),
+('Freelance content researcher', 'Stage', 'Club de sport', '80 a 100 euros par mois', 'Formation', 'Anglais, Espagnol, Francais', 'Paris', 'Grandes Ecoles', 'Passioné de culture, maitrise des langues', 'Non', 3),
+('Recruteur de donateur', 'CDI', 'remboursement titre de transport', '13euros de lheure', 'Prospection', 'Francais', 'Paris', 'Pas de diplome requis', 'Esprit equipe', 'Non', 4),
+('Office manager', 'CDD Temps plein', 'Tickets restaurant', '15000 a 20000 par an', 'Administration', 'Anglais, Francais', 'Paris', 'BTS', 'Expérience office manager', 'Bilingue', 5),
+('Startup objets connectés', 'Stage', 'Remboursement titre de transport', 'Pas payé', 'Ingénierie', 'Anglais, Francais', 'Paris', 'Grandes ecoles ingénieurs', 'Expérience', 'Motivé', 6),
+('', '', '', '', '', '', '', '', '', '', 7);
 
 -- --------------------------------------------------------
 
@@ -88,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `experience` (
 INSERT INTO `experience` (`poste`, `entreprise`, `lieu`, `date_debut`, `date_fin`, `description`, `id`, `username`) VALUES
 ('Stage', 'Mobil''Affiche', 'Paris', '2012-05-08', '2012-06-10', 'Stage', 1, 'lele'),
 ('Stage', 'BHV Marais', 'Paris', '2016-01-08', '2016-03-06', 'Stage de vente', 2, 'lele'),
-('Secretaire Generale', 'BDE Lutece', 'Paris', '2018-04-01', '2019-04-01', 'Gestion du BDE ECE paris', 3, 'manouel'),
+('Secretaire GÃ©nÃ©rale', 'BDE Lutece', 'Paris', '2018-04-01', '2019-04-01', 'Gestion du bde ECE paris', 3, 'manouel'),
 ('Developpeur', 'Crystal-Societe d''avocats', 'Paris 16', '2017-03-05', '2017-06-16', 'Developpement d''un site web', 4, 'manouel'),
 ('Stage', 'GreenFlex', 'Paris', '2017-10-01', '2017-12-28', 'Stage', 5, 'chachou'),
 ('Stage', 'Unilever Food Solutions', 'Londres', '2017-12-05', '2018-02-06', 'Stage a l''etranger', 6, 'chachou'),
@@ -123,7 +128,7 @@ INSERT INTO `formation` (`id`, `ecole`, `diplome`, `domaine`, `associations`, `d
 (5, 'ECE', 'Master-1', 'Ingenieur', 'BDE,BDS,Caves,Yacht,BDA', '2018-05-12', '2018-05-23', '', 'manouel'),
 (6, 'sqde', 'Bac+2', 'da', 'BDS', '2233-03-23', '2233-03-23', 'sefezf', 'chachou'),
 (7, 'ECE PARIS', 'Master-1', 'Commerce', 'BDE', '2015-01-01', '2018-05-02', '', 'manouel'),
-(8, 'DCU', 'Bac+3', 'Ingenerie', 'Caves', '2017-09-08', '2018-02-22', 'Super echange Ã  l''etranger', 'manouel');
+(8, 'DCU', 'Bac+3', 'Ingenerie', 'Caves', '2017-09-08', '2018-02-22', 'Super Ã©change Ã  l''Ã©tranger', 'manouel');
 
 -- --------------------------------------------------------
 
