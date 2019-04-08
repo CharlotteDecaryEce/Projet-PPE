@@ -59,7 +59,7 @@ if(!empty($_POST)){
                                         </a><br><br>
 
                                         <a href="modification_information_competences.php" class="btn btn-compose">
-                                            Compétences
+                                            Softskills
                                         </a><br><br>
                                         <a href="modification_information_centres_d'interets.php" class="btn btn-compose">
                                             Centre d'intérêts
@@ -71,7 +71,7 @@ if(!empty($_POST)){
                 <div class="col-lg-8">
                     <section class="panel">
                         <header class="panel-heading">
-                            Compétences
+                            Softskills
                             <span class="tools pull-right">
                                 <a href="javascript:;" class="fa fa-chevron-down"></a>
                              </span>

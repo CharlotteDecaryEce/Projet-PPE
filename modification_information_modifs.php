@@ -125,7 +125,7 @@ if(!empty($_POST)){
                                 </a><br><br>
 
                                 <a href="modification_information_competences.php" class="btn btn-compose">
-                                    Compétences
+                                    Softskills
                                 </a><br><br>
                                 <a href="modification_information_centres_d'interets.php" class="btn btn-compose">
                                     Centre d'intérêts
@@ -162,7 +162,7 @@ if(!empty($_POST)){
                                     }else {$comp=$_SESSION['auth']->competences;}
 
                                     ?>
-                                    Compétences: <?php echo($comp); ?>  
+                                    Sofskills: <?php echo($comp); ?>  
                                   </p>
                               </div>
 
