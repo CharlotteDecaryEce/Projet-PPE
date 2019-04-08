@@ -1,6 +1,6 @@
 <?php
 
-$title="Mes collegues";
+$title="Mon réseau";
 require 'include/functions.php';
 include("include/header.inc.php"); 
 include("include/menu_haut.inc.php"); 
