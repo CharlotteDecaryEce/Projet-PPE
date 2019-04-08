@@ -5,7 +5,7 @@ include("include/header.inc.php");
 include("include/menu_haut.inc.php"); 
 include("include/menu_gauche.inc.php"); 
 
-$all_comp= array('Pack Office','C','C++','Java','HTML/CSS','Espagnol','Anglais','Allemand','Matlab','Gestion de projet','Analyse financière','Design Thinking','Prototypage','Big Data','BlockChain','Entreprenariat','SQL','Leadership','Linux','Web Design','WordPress','Applications mobiles');
+$all_comp= array('Résolution de problèmes','Confiance','Intelligence Emotionelle','Empathie','Communication','Gestion du temps','Gestion du stress','Créativité','Esprit d entreprendre','Audace','Motivation','Visualisation','Présence','Sens du collectif','Curiosité');
 
 if(!empty($_POST)){
     require_once 'include/db.php';
