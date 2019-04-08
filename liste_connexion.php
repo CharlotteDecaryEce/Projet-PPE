@@ -37,7 +37,7 @@ $i=0;
             	<div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Striped Table
+                            Mon équipe
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
