@@ -73,19 +73,13 @@ if(!empty($_POST)){
                 <div class="col-lg-8">
                     <section class="panel">
                         <header class="panel-heading">
-                            Softskills
+                           Top Softskills
                             <span class="tools pull-right">
                                 <a href="javascript:;" class="fa fa-chevron-down"></a>
                              </span>
                         </header>
                         <div class="panel-body">
                             <table class="table  table-hover general-table">
-                                <thead>
-                                <tr>
-                                    <th> Nom</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
                                 <tbody>
                                     <?php $competences=$_SESSION['auth']->competences;
                                     $comp=explode(",", $competences);
@@ -105,9 +99,39 @@ if(!empty($_POST)){
                             </table>
                         </div>
                     </section>
+
                     <section class="panel">
                         <header class="panel-heading">
-                            Modifier mes compétences
+                            Softskills que je travaille
+                            <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            </span>
+                        </header>
+                        <div class="panel-body">
+                        <table class="table  table-hover general-table">
+                        <tbody>
+                        <?php $competences=$_SESSION['auth']->competences;
+                            $comp=explode(",", $competences);
+                            if(!empty($competences)){
+                                foreach($comp as $c): ?>
+                        <tr>
+                        <td><a ><?php echo $c; ?></a></td>
+                        </tr>
+                        <?php endforeach;
+                            }
+                            else{?>
+                        <tr>
+                        <td><a >Pas de compétences</a></td>
+                        </tr>
+                        <?php }?>
+                        </tbody>
+                        </table>
+                        </div>
+                        </section>
+
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Choisir mes Softskills à améliorer
                             <span class="tools pull-right">
                                 <a href="javascript:;" class="fa fa-chevron-down"></a>
                              </span>
