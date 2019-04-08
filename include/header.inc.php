@@ -6,10 +6,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Emmanuelle Thiroloix, Léa Blanchard, Charlotte Decary">
-    <link rel="shortcut icon" href="images/favcon.png">
+    <meta name="author" content="Emmanuelle Thiroloix, Baptiste Grobon, Charlotte Decary, Thibault Magnen, Raphael Guez">
+    <link rel="shortcut icon" href="images/otari.png">
 
-    <title>NetWire: <?php echo $title ?></title>
+    <title>Inuit</title>
 
 
 
