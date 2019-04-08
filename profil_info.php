@@ -162,6 +162,8 @@ $manager=$req->fetch();
                                         $comp_def=$req->fetch();
                                         ?><tr>
                                           <td><a ><?php echo $mon_def; ?></a></td>
+                                          <td><a ><?php echo $comp_def; ?></a></td>
+                                          <td><a href=<?php echo("liker_defis.php?id=".$id); ?>><i class="fa fa-thumbs-up"></i></a></td>
                                           </tr><?php
                                     endforeach; 
                                 }else{?>
