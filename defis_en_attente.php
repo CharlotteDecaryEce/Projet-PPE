@@ -50,7 +50,7 @@ foreach ($id_envoie as $mec) {
             	<div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Liste de mes défis réalisés
+                            Liste des défis proposés
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">

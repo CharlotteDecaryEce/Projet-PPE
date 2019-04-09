@@ -11,9 +11,9 @@ include("include/menu_gauche.inc.php");
 
 define('DB_SERVER','localhost');
 define('DB_USER','root');
-define('DB_PASS','');
+define('DB_PASS','root');
 
-$database = "piscine";
+$database = "ppe.sql";
 
 $db_handle=mysqli_connect(DB_SERVER,DB_USER,DB_PASS);
 $db_found = mysqli_select_db($db_handle, $database);
@@ -370,7 +370,3 @@ if ($db_found) {
 
 
 </body>
-
-
-
-

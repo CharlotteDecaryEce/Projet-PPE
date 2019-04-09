@@ -379,21 +379,17 @@ a.logo span {
     margin-left:25px;
 }
 ul.top-menu1 {
-    margin-left:5%;
-    margin-bottom: 5%
+    margin-left:15%;
     text-align: center;
     margin-top: 0;
 }
 ul.top-menu2 {
-    margin-left:10%;
-    margin-bottom: 5%
+    margin-left:15%;
     text-align: center;
     margin-top: 0;
-    color: white;
 }
 ul.top-menu3 {
     margin-left:15%;
-    margin-bottom: 5%
     text-align: center;
     margin-top: 0;
 }
@@ -732,15 +728,15 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 /*--sidebar toggle---*/
 .sidebar-toggle-box {
     float:left;
-    margin-top:23px;
-    margin-left:-15px;
+    margin-top:25px;
+    margin-left:-20px;
     background:#fff;
     border-radius:50%;
     -webkit-border-radius:50%;
     width:32px;
     height:32px;
     position:absolute;
-    right:-15px;
+    right:-70px;
 }
 .sidebar-toggle-box .fa-bars {
     cursor:pointer;
@@ -793,6 +789,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 .toggle-right-box .fa-bars {
     cursor:pointer;
     display:inline-block;
+    margin-left: 200px;
     font-size:15px;
     padding:10px;
     color: #bfbfc1;
