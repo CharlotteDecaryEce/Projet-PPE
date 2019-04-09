@@ -127,9 +127,6 @@ if(!empty($_POST)){
                                 <a href="modification_information_competences.php" class="btn btn-compose">
                                     Softskills
                                 </a><br><br>
-                                <a href="modification_information_centres_d'interets.php" class="btn btn-compose">
-                                    Centre d'intérêts
-                                </a>
                             </div>
                         </section>
                 </div>
@@ -189,65 +186,6 @@ if(!empty($_POST)){
                                         <td>
                                             <?php echo($_SESSION['auth']->username); ?>
                                         </td>
-                                        
-                                    </tr>
-                                     <tr>
-                                        <td><a >EMAIL</a></td>
-                                        <td>
-                                            <?php echo($_SESSION['auth']->email); ?>
-                                        </td>
-                                        
-                                    </tr>
-                                     <tr>
-                                        <td><a>DATE DE NAISSANCE</a></td>
-                                        <td>
-                                            <?php echo($_SESSION['auth']->date_naissance); ?>
-                                        </td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td><a >ADRESSE</a></td>
-                                        <td>
-                                            <?php echo($_SESSION['auth']->adresse); ?>
-                                        </td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td><a >VILLE</a></td>
-                                        <td>
-                                            <?php echo($_SESSION['auth']->ville); ?>
-                                        </td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td><a >CODE POSTAL</a></td>
-                                        <td>
-                                            <?php echo($_SESSION['auth']->cp); ?>
-                                        </td>
-                                        
-                                    </tr><tr>
-                                        <td><a >PAYS</a></td>
-                                        <td>
-                                          <?php echo($_SESSION['auth']->pays); ?>
-                                        </td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td><a >TELEPHONE</a></td>
-                                        <td>
-                                            <?php echo($_SESSION['auth']->telephone); ?>
-                                        </td>
-                                        
-                                    </tr>
-                                    <tr>
-
-                                        <td><a >RESUME</a></td>
-                                        <td> 
-                                            <?php echo($_SESSION['auth']->resume); ?>
-                                        </td>
-                                        
-                                    
-                                        
                                     </tr>
                                 </table>
                               </div>
@@ -277,42 +215,6 @@ if(!empty($_POST)){
                                       <div class="form-group">
                                         <input class="form-control" type="text" name="username" placeholder=<?php echo($_SESSION['auth']->username); ?> />
                                       </div>
-                                      <p>Email</p>
-                                      <div class="form-group">
-                                        <input class="form-control" type="text" name="email" placeholder=<?php echo($_SESSION['auth']->email); ?> />
-                                    </div>
-                                    <p>Adresse</p>
-                                      <div class="form-group">
-                                        <input class="form-control" type="text" name="adresse" placeholder=<?php echo($_SESSION['auth']->adresse); ?> />
-                                    </div>
-                                    <p>Ville</p>
-                                      <div class="form-group">
-                                        <input class="form-control" type="text" name="ville" placeholder=<?php echo($_SESSION['auth']->ville); ?> />
-                                    </div>
-                                    <p>Code Postal</p>
-                                      <div class="form-group">
-                                        <input class="form-control" type="text" name="cp" placeholder=<?php echo($_SESSION['auth']->cp); ?> />
-                                    </div>
-                                    <p>Pays</p>
-                                      <div class="form-group">
-                                        <select name="pays" class="form-control" placeholder=<?php echo($_SESSION['auth']->pays); ?>>
-                                            <option value="France">France</option>      
-                                            <option value="Angleterre">Angleterre</option>  
-                                            <option value="Irlande">Irlande</option>
-                                            <option value="Espagne">Espagne</option>
-                                        </select>
-                                      </div>
-                                      <p>Téléphone</p>
-                                      <div class="form-group">
-                                        <input class="form-control" type="number" name="telephone" placeholder=<?php echo($_SESSION['auth']->telephone); ?> />
-                                    </div>
-                                    <p>Date de naissance</p>
-                                      <div class="form-group">
-                                          <input type="date" class="form-control" name="date_naissance" placeholder=<?php echo($_SESSION['auth']->date_naissance); ?> />
-                                      </div>
-                                      
-                                    <p>RESUME</p>
-                                    <textarea class="wysihtml5 form-control" name="resume" rows="4" placeholder="Entrez votre résumé"></textarea>
                                     <br>
                                     <p>Photo</p>
                                     <div class="form-group">

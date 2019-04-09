@@ -8,6 +8,12 @@ include("include/menu_gauche.inc.php");
 
 $all_comp= array('Optimisme','Confiance','Sociabilite','Empathie','Communication','Efficacite','Gestion_du_stress','Creativite','Audace','Motivation','Visualisation','Présence','Adaptabilite','Curiosite','Disponibilite');
 
+$req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
+      $req->execute([$_SESSION['auth']->id]);
+      $moi=$req->fetch();
+$comp_acquises=$moi->competences_acquises;
+$array_comp_acquises=explode(',',$comp_acquises);
+
 
 if(!empty($_POST)){
     require_once 'include/db.php';
@@ -28,6 +34,8 @@ if(!empty($_POST)){
     $_SESSION['auth']->competences=$modif_com;
 }
 
+$array_id_defis_rea=$moi->defis_realises;
+$id_defis_rea=explode(',',$array_id_defis_rea);
 
 ?>
 
@@ -63,9 +71,6 @@ if(!empty($_POST)){
                                         <a href="modification_information_competences.php" class="btn btn-compose">
                                             Softskills
                                         </a><br><br>
-                                        <a href="modification_information_centres_d'interets.php" class="btn btn-compose">
-                                            Centre d'intérêts
-                                        </a>
                                 </div>
                         </section>
                 </div>
@@ -73,7 +78,7 @@ if(!empty($_POST)){
                 <div class="col-lg-8">
                     <section class="panel">
                         <header class="panel-heading">
-                           Top Softskills
+                            Softskills acquises / en cours d'acquisition
                             <span class="tools pull-right">
                                 <a href="javascript:;" class="fa fa-chevron-down"></a>
                              </span>
@@ -81,12 +86,27 @@ if(!empty($_POST)){
                         <div class="panel-body">
                             <table class="table  table-hover general-table">
                                 <tbody>
-                                    <?php $competences=$_SESSION['auth']->competences;
-                                    $comp=explode(",", $competences);
-                                     if(!empty($competences)){
-                                     foreach($comp as $c): ?>
+                                    <?php 
+                                     if(!empty($array_comp_acquises)){
+                                     foreach($array_comp_acquises as $c): 
+                                        //compter progression softskills
+                                        $progression=0;
+                                        foreach ($id_defis_rea as $def) {
+                                            $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
+                                              $req->execute([$def]);
+                                              $defis=$req->fetch();
+                                              if($defis->competences_acquises==$c){
+                                                $progression=$progression+1;
+                                              }
+
+                                        } $progression=$progression*50;
+                                        ?>
                                        <tr>
-                                       <td><a ><?php echo $c; ?></a></td>
+                                       <td><a ><?php echo $c; ?></a> 
+                                        <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow=<?php echo($progression); ?> aria-valuemin="0" aria-valuemax="100" style=<?php echo('"width: '.$progression.'%"'); ?> >
+                                        </div>
+                                        </div></td>
                                         </tr>
                                     <?php endforeach; 
                                     }
@@ -102,7 +122,7 @@ if(!empty($_POST)){
 
                     <section class="panel">
                         <header class="panel-heading">
-                            Softskills que je travaille
+                            Softskills que je souhaite travailler
                             <span class="tools pull-right">
                             <a href="javascript:;" class="fa fa-chevron-down"></a>
                             </span>

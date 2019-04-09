@@ -20,12 +20,18 @@
                 </a>
             </li>
             <li class="sub-menu">
-                <a href="javascript:;" <?php if($page == "modification_information.php" || $page=="formation.php" || $page=="experience.php"){echo 'class="active"';} ?>>
+                <a href="javascript:;" <?php if($page == "modification_information.php" || $page=="modification_information_modif.php" || $page=="modification_information_competences.php"){echo 'class="active"';} ?>>
                     <i class="fa fa-user"></i>
                     <span>Profil</span>
                 </a>
                 <ul class="sub">
                     <li <?php if($page == "modification_information.php" ){echo 'class="active"';} ?>><a href="modification_information.php">Informations personnelles</a></li>
+                </ul>
+                <ul class="sub">
+                    <li <?php if($page == "modification_information_modifs.php" ){echo 'class="active"';} ?>><a href="modification_information_modifs.php">Modifier informations personnelles</a></li>
+                </ul>
+                <ul class="sub">
+                    <li <?php if($page == "modification_information_competences.php" ){echo 'class="active"';} ?>><a href="modification_information_competences.php">Softskills</a></li>
                 </ul>
             </li>
             <li class="sub-menu">
