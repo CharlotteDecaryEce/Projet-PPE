@@ -8,8 +8,7 @@ include("include/menu_gauche.inc.php");
 
 require_once 'include/db.php';
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
-      //$req->execute([$_SESSION['auth']->id]);
-      $req->execute(['19']);
+      $req->execute([$_SESSION['auth']->id]);
       $mec=$req->fetch(); 
       
 $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
@@ -59,11 +58,17 @@ $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
                                     <div class="col-lg-4">
                                     <th>Durée (en jours)</th>
                                     </div>
+                                    <div class="col-lg-4">
+                                    <th>Validation</th>
+                                    </div>
+                                    <div class="col-lg-4">
+                                    <th>Echec</th>
+                                    </div>
                                 </tr>
                                 </div>
                                 </thead>
                                 <tbody>
-                                
+                                <?php if($defis_en_cours!=''){?>
                                 <td><?php echo($defis_en_cours->nom)?></td>
                                 
                                 <td><?php echo($defis_en_cours->resume)?></td>
@@ -72,10 +77,13 @@ $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
                                
                                 <td><?php echo($defis_en_cours->duree)?></td>
                                 
-
-                        
-                               
+                                <td> <a href=<?php echo("valider_defis.php?id_defis=".$defis_en_cours->id);?> type="button" class="btn btn-success">Succes</a> 
+                                </td>
+                                <td>  <a href=<?php echo("echec_defis.php?id_defis=".$defis_en_cours->id);?> type="button" class="btn btn-danger">Echec</a>
+                                </td>
+                            <?php }else{ echo("<td>Pas de défis en cours</td>");}?>
                                 </tbody>
+                            
                             </table>
                         </div>
                     </section>

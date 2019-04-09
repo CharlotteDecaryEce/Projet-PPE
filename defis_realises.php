@@ -6,28 +6,14 @@ include("include/header.inc.php");
 include("include/menu_haut.inc.php"); 
 include("include/menu_gauche.inc.php"); 
 
-$demandes=array();
 require_once 'include/db.php';
-$req=$pdo->prepare('SELECT * FROM relations WHERE (id_1= ? OR id_2= ?) ');
-$req->execute([$_SESSION['auth']->id,$_SESSION['auth']->id]);
-$id_envoie=$req->fetchAll();
-$i=0;
-foreach ($id_envoie as $mec) {
-  if($mec->id_1 != $_SESSION['auth']->id)
-  {
-    $req=$pdo->prepare('SELECT * FROM informations WHERE id= ? ');
-    $req->execute([$mec->id_1]);
-    $demandes[$i]=$req->fetch();
-    $i++;
-  }
-  else{
-    $req=$pdo->prepare('SELECT * FROM informations WHERE id= ? ');
-    $req->execute([$mec->id_2]);
-    $demandes[$i]=$req->fetch();
-    $i++;
-  }
-}
 
+      
+$req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
+      $req->execute([$_SESSION['auth']->id]);
+      $defis=$req->fetch()->defis_realises; 
+$defis_realises=explode(",", $defis);
+ 
 ?>
 
 <body>
@@ -59,17 +45,26 @@ foreach ($id_envoie as $mec) {
                                     <th>Intitulé</th>
                                     <th>Résumé</th>
                                     <th>Compétence apportée</th>
+                                    <th>Durée (en J)</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php  if($demandes!=""):
-                                foreach ($demandes as $rech) :?>
+                                <?php if($defis_realises!=''){
+                                    foreach ($defis_realises as $def) :
+                                        $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
+                                          $req->execute([$def]);
+                                          $defis=$req->fetch(); ?>
                                 <tr>
-                                    <th><a href=<?php echo("profil_info.php?id=".$rech->id)?> ><?php echo($rech->prenom)?></a></th>
-                                    <td><?php echo($rech->nom)?></td>
-                                    <td><?php echo($rech->username)?></td>
+                                    <td><?php echo($defis->nom)?></td>
+                                
+                                <td><?php echo($defis->resume)?></td>
+                                
+                                <td><?php echo($defis->competences_acquises)?></td>
+                               
+                                <td><?php echo($defis->duree)?></td>
                                 </tr>
-                                <?php endforeach; endif; ?>
+                                <?php endforeach;?>
+                                <?php }else{ echo("<td>Pas de défis réalisés</td>");}?>
                                 </tbody>
                             </table>
                         </div>

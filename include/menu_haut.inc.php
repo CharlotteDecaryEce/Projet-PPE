@@ -1,5 +1,12 @@
 <?php 
 logged_only();
+require_once 'include/db.php';
+$req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
+      $req->execute([$_SESSION['auth']->id]);
+      $moi=$req->fetch();
+$like_a_distrib=$moi->likes_distrib;
+$likes_recus=$moi->likes_recus;
+
 ?>
 
 <section id="container" >
@@ -25,6 +32,7 @@ logged_only();
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
+             <li class="fa fa-thumbs-up"><span class="badge">42</span></li>
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="modification_information.php">

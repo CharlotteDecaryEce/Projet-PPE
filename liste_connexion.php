@@ -54,7 +54,7 @@ $i=0;
                                 <?php  if($collegues!=""):
                                 foreach ($collegues as $col) :?>
                                 <tr>
-                                    <th><a href=<?php echo("profil_info.php?id=".$col->id)?> ><?php echo($col->prenom)?></a></th>
+                                    <th><a href=<?php if($col->id !=$_SESSION['auth']->id){echo("profil_info.php?id=".$col->id);}else{echo("modification_information.php");}?> ><?php echo($col->prenom)?></a></th>
                                     <td><?php echo($col->nom)?></td>
                                     <td><?php echo($col->username)?></td>
                                     <td><?php echo($col->type)?></td>
