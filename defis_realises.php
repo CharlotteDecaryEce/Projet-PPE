@@ -45,6 +45,7 @@ $defis_realises=explode(",", $defis);
                                     <th>Intitulé</th>
                                     <th>Résumé</th>
                                     <th>Compétence apportée</th>
+                                    <th>Durée (en J)</th>
                                 </tr>
                                 </thead>
                                 <tbody>
