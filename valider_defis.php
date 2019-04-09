@@ -22,11 +22,24 @@ $ok=1;
 foreach ($moi->competences_acquises as $c) {
       if($c==$defis->competences_acquises) {
             $ok=0;
+            $req=$pdo->prepare('SELECT competences FROM informations WHERE id = ?');
+                  $req->execute([$_SESSION['auth']->id]);
+                  $comp_voulu=$req->fetch();
+                  $comp=explode(',',$comp_voulu);
+                  $compe='';
+                  foreach ($comp as $c) {
+                        if($comp!=$defis->competences_acquises){
+                              if($compe!=''){
+                                    $compe=$compe.','.$c
+                              }
+                              else $compe=$c;
+                        }
+                  }
       }
 }
 //ajout compétence acquise
 if($ok==1){
-      $req=$pdo->prepare('UPDATE informations SET competences_acquises=? WHERE id = ?')->execute([$competence_acquise,$_SESSION['auth']->id]);
+      $req=$pdo->prepare('UPDATE informations SET competences_acquises=? competences=? WHERE id = ?')->execute([$competence_acquise,$compe, $_SESSION['auth']->id]);
 }
 
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
@@ -46,6 +59,7 @@ $req=$pdo->prepare('UPDATE informations SET defis_realises=? WHERE id = ?')->exe
 $req=$pdo->prepare('UPDATE informations SET defis_en_cours=? WHERE id = ?')->execute(['',$_SESSION['auth']->id]);
 
 
-header('Location: defis_en_cours.php');
+
+header('Location: algo_choix_defis.php');
 exit();
 ?>

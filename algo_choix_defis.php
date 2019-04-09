@@ -102,9 +102,27 @@ else{
 	        }
 	     }
         } 
+		//si choisie + pas commencée
+        else{
+        	//on choisi la competence voulu avec la prio la plus haute
+        	$prio_max=31;
+        	$comp='';
+        	foreach (explode(',',$moi->competences) as $c_voulu) {
+        		echo($c_voulu);
+        		$req=$pdo->prepare('SELECT * FROM defis WHERE competences_acquises=? LIMIT 1');
+                    $req->execute([$c_voulu]);
+                    $defis=$req->fetch();
+                    if($defis->importance<$prio_max){
+                    	$prio_max=$defis->importance;
+                    	$comp=$c_voulu;
+                    }
+        	}
+        	$req=$pdo->prepare('SELECT * FROM defis WHERE competences_acquises=? LIMIT 1');
+                    $req->execute([$comp]);
+                    $defis=$req->fetch();
+                    $id_defis_choisi=$defis->id;
 
-
-	//si choisie + pas commencée
+        }
 }
 
 if($moi->defis_en_attente!=''){
@@ -112,5 +130,8 @@ if($moi->defis_en_attente!=''){
 }
 else $id_defis=$id_defis_choisi;
 $req=$pdo->prepare('UPDATE informations SET defis_en_attente=? WHERE id = ?')->execute([$id_defis,$_SESSION['auth']->id]);
+
+header('Location: defis_en_cours.php');
+exit();
 
 ?>
