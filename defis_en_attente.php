@@ -6,29 +6,21 @@ include("include/header.inc.php");
 include("include/menu_haut.inc.php"); 
 include("include/menu_gauche.inc.php"); 
 
-$demandes=array();
 require_once 'include/db.php';
-$req=$pdo->prepare('SELECT * FROM relations WHERE (id_1= ? OR id_2= ?) ');
-$req->execute([$_SESSION['auth']->id,$_SESSION['auth']->id]);
-$id_envoie=$req->fetchAll();
-$i=0;
-foreach ($id_envoie as $mec) {
-  if($mec->id_1 != $_SESSION['auth']->id)
-  {
-    $req=$pdo->prepare('SELECT * FROM informations WHERE id= ? ');
-    $req->execute([$mec->id_1]);
-    $demandes[$i]=$req->fetch();
-    $i++;
-  }
-  else{
-    $req=$pdo->prepare('SELECT * FROM informations WHERE id= ? ');
-    $req->execute([$mec->id_2]);
-    $demandes[$i]=$req->fetch();
-    $i++;
-  }
-}
 
-?>
+      
+$req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
+      $req->execute([$_SESSION['auth']->id]);
+      $moi=$req->fetch();
+$req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
+      $req->execute([$_SESSION['auth']->id]);
+      $defis=$req->fetch()->defis_en_attente; 
+if($defis!=''){
+    $defis_en_attente=explode(",", $defis);
+}
+else $defis_en_attente='';
+
+ ?>
 
 <body>
 
@@ -36,7 +28,7 @@ foreach ($id_envoie as $mec) {
 <section id="main-content">
         <section class="wrapper">
         <!-- page start-->
-        	<div class="row">
+            <div class="row">
                 <div class="col-md-12">
                     <!--breadcrumbs start -->
                     <ul class="breadcrumb">
@@ -46,36 +38,59 @@ foreach ($id_envoie as $mec) {
                     <!--breadcrumbs end -->
                 </div>
             </div>
+            
             <div class="row">
-            	<div class="col-lg-12">
+            <?php if($defis_en_attente!=''){
+                 foreach ($defis_en_attente as $def) :
+                 $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
+                 $req->execute([$def]);
+                 $defis=$req->fetch(); ?>
+
+                <div class="col-lg-4">
                     <section class="panel">
-                        <header class="panel-heading">
-                            Liste des défis proposés
+                        <header class="panel-heading-defis">
+                        <tr><?php echo($defis->nom)?> </tr>
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
                                 <thead>
-                                <tr>
-                                    <th>Intitulé</th>
-                                    <th>Résumé</th>
-                                    <th>Compétence apportée</th>
-                                </tr>
+                                <center> <a class="displayed"><img src="images/award.png" alt=""></a> </center><br>
                                 </thead>
+                               
                                 <tbody>
-                                <?php  if($demandes!=""):
-                                foreach ($demandes as $rech) :?>
                                 <tr>
-                                    <th><a href=<?php echo("profil_info.php?id=".$rech->id)?> ><?php echo($rech->prenom)?></a></th>
-                                    <td><?php echo($rech->nom)?></td>
-                                    <td><?php echo($rech->username)?></td>
+                                    <td> <?php echo($defis->resume)?> </td>
+                                </tr> 
+                                <tr>
+                                    <td> Compétence: <?php echo ($defis->competences_acquises)?> </td>
                                 </tr>
-                                <?php endforeach; endif; ?>
+                                <tr>
+                                    <td> Durée: <?php echo ($defis->duree)?> </td>
+                                </tr>
+                                <tr>
+                                <?php if($moi->defis_en_cours==''){ echo("<a href=\"choisir_defis.php?id_def=".$defis->id." \"  type=\"button\" class=\"btn btn-success\">GO!</a>"); } ?>
+                            </tr>
                                 </tbody>
                             </table>
                         </div>
                     </section>
                 </div>
+                <?php endforeach;
+            }
+                else{?>
+                <div class="col-lg-4">
+                    <section class="panel">
+                        <header class="panel-heading-defis">
+                        <tr>
+                            <td><a >Pas de compétences acquises</a></td>
+                        </tr>
+                        </header>
+                    </section>
+                    
+                </div>
+                <?php } ?>
             </div>
+           
         <!-- page end-->
         </section>
     </section>
