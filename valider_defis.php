@@ -18,8 +18,16 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       	$competence_acquise=$defis->competences_acquises;
       }
 
+$ok=1;
+foreach ($moi->competences_acquises as $c) {
+      if($c==$defis->competences_acquises) {
+            $ok=0;
+      }
+}
 //ajout compétence acquise
-$req=$pdo->prepare('UPDATE informations SET competences_acquises=? WHERE id = ?')->execute([$competence_acquise,$_SESSION['auth']->id]);
+if($ok==1){
+      $req=$pdo->prepare('UPDATE informations SET competences_acquises=? WHERE id = ?')->execute([$competence_acquise,$_SESSION['auth']->id]);
+}
 
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$_SESSION['auth']->id]);
