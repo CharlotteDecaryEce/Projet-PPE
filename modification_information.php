@@ -6,7 +6,23 @@ include("include/header.inc.php");
 include("include/menu_haut.inc.php"); 
 include("include/menu_gauche.inc.php"); 
 
-$nb_comp=count($_SESSION['auth']->competences);
+$req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
+      $req->execute([$_SESSION['auth']->id]);
+      $moi=$req->fetch();
+$nb_like_distrib=$moi->likes_distrib;
+$nb_like_recus=$moi->likes_recus;
+if($nb_like_recus==''){
+  $nb_like_recus='0';
+}
+if($nb_like_distrib==''){
+  $nb_like_distrib='0';
+}
+$competences=$moi->competences_acquises;
+if($competences!=''){
+  $array_comp=explode(',', $competences);
+$nb_comp=count($array_comp);
+}
+else $nb_comp='0';
 ?>
 <body>
     <!--main content start-->
@@ -39,6 +55,7 @@ $nb_comp=count($_SESSION['auth']->competences);
                                         <a href="modification_information_competences.php" class="btn btn-compose">
                                             Softskills
                                         </a><br><br>
+
                                         <a href="modification_information_centres_d'interets.php" class="btn btn-compose">
                                             Centre d'intérêts
                                         </a>
@@ -62,28 +79,12 @@ $nb_comp=count($_SESSION['auth']->competences);
                        </div>
                        <div class="col-lg-4">
                            <div class="profile-statistics">
-                                    <?php
-                                    if(!empty($_SESSION['auth']->interets)){
-                                        $interets=explode(",",$_SESSION['auth']->interets);
-                                        $nb_interet=count($interets);
-                                    }
-                                    else{
-                                        $nb_interet="0";
-                                        $interets="";
-                                    }
-                                    if(!empty($_SESSION['auth']->competences)){
-                                        $competences=explode(",",$_SESSION['auth']->competences);
-                                        $nb_comp=count($competences);
-                                    }
-                                    else{
-                                        $nb_comp="0";
-                                        $competences="";
-                                    }
-                                    ?>
                                <h1><?php echo $nb_comp ?></h1>
                                <p>Softskills</p>
-                               <h1><?php echo $nb_interet ?></h1>
-                               <p>Centres d'interet</p>
+                               <h1><?php echo $nb_like_recus ?></h1>
+                               <p>Likes reçus</p>
+                               <h1><?php echo $nb_like_distrib ?></h1>
+                               <p>Likes à distribuer</p>
                            </div>
                        </div>
                     </div>
