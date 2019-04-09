@@ -1,6 +1,6 @@
 <?php 
 logged_only();
-
+require_once 'include/db.php';
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$_SESSION['auth']->id]);
       $moi=$req->fetch();
