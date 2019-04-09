@@ -79,7 +79,7 @@ $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
                                 
                                 <td> <a href=<?php echo("valider_defis.php?id_defis=".$defis_en_cours->id);?> type="button" class="btn btn-success">Succes</a> 
                                 </td>
-                                <td>  <button href=<?php echo("echec_defis.php?id_defis=".$defis_en_cours->id);?> type="button" class="btn btn-danger">Echec</button>
+                                <td>  <a href=<?php echo("echec_defis.php?id_defis=".$defis_en_cours->id);?> type="button" class="btn btn-danger">Echec</a>
                                 </td>
                             <?php }else{ echo("<td>Pas de défis en cours</td>");}?>
                                 </tbody>
