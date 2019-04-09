@@ -55,10 +55,6 @@ else $nb_comp='0';
                                         <a href="modification_information_competences.php" class="btn btn-compose">
                                             Softskills
                                         </a><br><br>
-
-                                        <a href="modification_information_centres_d'interets.php" class="btn btn-compose">
-                                            Centre d'intérêts
-                                        </a>
                                 </div>
                         </section>
                 </div>

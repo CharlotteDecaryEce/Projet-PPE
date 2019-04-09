@@ -71,9 +71,6 @@ $id_defis_rea=explode(',',$array_id_defis_rea);
                                         <a href="modification_information_competences.php" class="btn btn-compose">
                                             Softskills
                                         </a><br><br>
-                                        <a href="modification_information_centres_d'interets.php" class="btn btn-compose">
-                                            Centre d'intérêts
-                                        </a>
                                 </div>
                         </section>
                 </div>
@@ -81,7 +78,7 @@ $id_defis_rea=explode(',',$array_id_defis_rea);
                 <div class="col-lg-8">
                     <section class="panel">
                         <header class="panel-heading">
-                            Softskills acquises
+                            Softskills acquises / en cours d'acquisition
                             <span class="tools pull-right">
                                 <a href="javascript:;" class="fa fa-chevron-down"></a>
                              </span>
@@ -101,14 +98,13 @@ $id_defis_rea=explode(',',$array_id_defis_rea);
                                               if($defis->competences_acquises==$c){
                                                 $progression=$progression+1;
                                               }
-                                              echo("def=".$def."  progression=".$progression);
 
                                         } $progression=$progression*50;
                                         ?>
                                        <tr>
                                        <td><a ><?php echo $c; ?></a> 
                                         <div class="progress">
-                                        <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow=<?php echo($progression); ?> aria-valuemin="0" aria-valuemax="100" style=<?php echo("width: ".$progression."%"); ?> >
+                                        <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow=<?php echo($progression); ?> aria-valuemin="0" aria-valuemax="100" style=<?php echo('"width: '.$progression.'%"'); ?> >
                                         </div>
                                         </div></td>
                                         </tr>
