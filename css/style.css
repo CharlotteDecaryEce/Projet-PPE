@@ -618,12 +618,12 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     color:#32323a !important;
 }
 .dropdown-menu.extended.logout>li>a:hover {
-    background:#4a69bd !important;
+    background:#07234D !important;
     border-radius:5px;
     color:#F1F2F7 !important;
 }
 .dropdown-menu.extended.logout>li>a:hover i {
-    color:#F1F2F7;
+    color:#07234D;
 }
 .dropdown-menu.extended.logout>li>a i {
     font-size:17px;
@@ -642,7 +642,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     background:none;
     margin-right:0;
     border:1px solid #F6F6F6;
-    background:#4a69bd;
+    background:#07234D;
 }
 .top-nav ul.top-menu>li.language>a {
     margin-top:-2px;
