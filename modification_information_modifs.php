@@ -36,65 +36,6 @@ if(!empty($_POST)){
         $error['photo']="Votre nom à bien été mis à jour!";
         $_SESSION['auth']->username=$_POST['photo'];
     }
-    if(!empty($_POST['email'])){
-        $pdo->prepare('UPDATE informations SET email = ? WHERE id = ?')->execute([$_POST['email'], $user_id]);
-        $_SESSION['flash']['success'] = "Votre email a bien été mis à jour";
-        $error['email']="Votre email à bien été mis à jour!";
-        $_SESSION['auth']->email=$_POST['email'];
-    }
-    if(!empty($_POST['adresse'])){
-        $pdo->prepare('UPDATE informations SET adresse = ? WHERE id = ?')->execute([$_POST['adresse'], $user_id]);
-        $_SESSION['flash']['success'] = "Votre adresse a bien été mis à jour";
-        $error['nom']="Votre adresse à bien été mis à jour!";
-        $_SESSION['auth']->adresse=$_POST['adresse'];
-    }
-    if(!empty($_POST['ville'])){
-        $pdo->prepare('UPDATE informations SET ville = ? WHERE id = ?')->execute([$_POST['ville'], $user_id]);
-        $_SESSION['flash']['success'] = "Votre ville a bien été mis à jour";
-        $error['ville']="Votre ville à bien été mis à jour!";
-        $_SESSION['auth']->ville=$_POST['ville'];
-    }
-    if(!empty($_POST['cp'])){
-        $pdo->prepare('UPDATE informations SET cp = ? WHERE id = ?')->execute([$_POST['cp'], $user_id]);
-        $_SESSION['flash']['success'] = "Votre code postal a bien été mis à jour";
-        $error['cp']="Votre code postal à bien été mis à jour!";
-        $_SESSION['auth']->cp=$_POST['cp'];
-    }
-    if(!empty($_POST['pays'])){
-        $pdo->prepare('UPDATE informations SET pays = ? WHERE id = ?')->execute([$_POST['pays'], $user_id]);
-        $_SESSION['flash']['success'] = "Votre pays a bien été mis à jour";
-        $error['pays']="Votre pays à bien été mis à jour!";
-        $_SESSION['auth']->pays=$_POST['pays'];
-    }
-    if(!empty($_POST['telephone'])){
-        $pdo->prepare('UPDATE informations SET telephone = ? WHERE id = ?')->execute([$_POST['telephone'], $user_id]);
-        $_SESSION['flash']['success'] = "Votre téléphone a bien été mis à jour";
-        $error['telephone']="Votre téléphone à bien été mis à jour!";
-    }
-    if(!empty($_POST['date_naissance'])){
-        $pdo->prepare('UPDATE informations SET date_naissance = ? WHERE id = ?')->execute([$_POST['date_naissance'], $user_id]);
-        $_SESSION['flash']['success'] = "Votre date de naissance a bien été mis à jour";
-        $error['date_naissance']="Votre date de naissance à bien été mis à jour!";
-        $_SESSION['auth']->date_naissance=$_POST['date_naissance'];
-    }
-    if(!empty($_POST['resume'])){
-        $pdo->prepare('UPDATE informations SET resume = ? WHERE id = ?')->execute([$_POST['resume'], $user_id]);
-        $_SESSION['flash']['success'] = "Votre résumé a bien été mis à jour";
-        $error['resume']="Votre résumé à bien été mis à jour!";
-        $_SESSION['auth']->resume=$_POST['resume'];
-    }
-    if(!empty($_POST['cv'])){
-        $pdo->prepare('UPDATE informations SET cv = ? WHERE id = ?')->execute([$_POST['cv'], $user_id]);
-        $_SESSION['flash']['success'] = "Votre cv a bien été mis à jour";
-        $error['cv']="Votre cv à bien été mis à jour!";
-        $_SESSION['auth']->cv=$_POST['cv'];
-    }
-    if(!empty($_POST['photo'])){
-        $pdo->prepare('UPDATE informations SET photo = ? WHERE id = ?')->execute([$_POST['photo'], $user_id]);
-        $_SESSION['flash']['success'] = "Votre photo a bien été mis à jour";
-        $error['photo']="Votre photo à bien été mis à jour!";
-        $_SESSION['auth']->photo=$_POST['photo'];
-    }
 }
 
 ?>

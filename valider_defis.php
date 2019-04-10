@@ -10,36 +10,42 @@ $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$_SESSION['auth']->id]);
       $moi=$req->fetch();
-      if($moi->competences_acquises!="")
+
+      if($moi->competences_acquises!='')
       {
-      	$competence_acquise=$moi->competences_acquises.",".$defis->competences_acquises;
+            if($competences_acquises!=''){
+                  $competence_acquise=$moi->competences_acquises.",".$defis->competences_acquises;
+            }
+      	else $competence_acquise=$defis->competences_acquises;
       }
       else{
       	$competence_acquise=$defis->competences_acquises;
       }
 
+if($moi->competences_acquises!=''){
+      $competenc_acquises=explode(',',$moi->competences_acquises);
+}
+else $competenc_acquises='';
+$compe='';
 $ok=1;
-foreach ($moi->competences_acquises as $c) {
-      if($c==$defis->competences_acquises) {
-            $ok=0;
-            $req=$pdo->prepare('SELECT competences FROM informations WHERE id = ?');
+$req=$pdo->prepare('SELECT competences FROM informations WHERE id = ?');
                   $req->execute([$_SESSION['auth']->id]);
                   $comp_voulu=$req->fetch();
-                  $comp=explode(',',$comp_voulu);
-                  $compe='';
-                  foreach ($comp as $c) {
-                        if($comp!=$defis->competences_acquises){
-                              if($compe!=''){
-                                    $compe=$compe.','.$c
-                              }
-                              else $compe=$c;
-                        }
+
+if($competenc_acquises!='')
+{
+      foreach ($competenc_acquises as $c) {
+            if($c=!$defis->competences_acquises) {
+                  if($compe!=''){
+                        $compe=$compe.','.$c;
                   }
+                  else $compe=$c;
+            }
       }
 }
 //ajout compétence acquise
 if($ok==1){
-      $req=$pdo->prepare('UPDATE informations SET competences_acquises=? competences=? WHERE id = ?')->execute([$competence_acquise,$compe, $_SESSION['auth']->id]);
+      $req=$pdo->prepare('UPDATE informations SET competences_acquises=?, competences=? WHERE id = ?')->execute([$competence_acquise,$compe, $_SESSION['auth']->id]);
 }
 
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');

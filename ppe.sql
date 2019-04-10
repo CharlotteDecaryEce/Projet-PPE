@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 09, 2019 at 08:55 AM
+-- Generation Time: Apr 10, 2019 at 08:01 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -49,17 +49,20 @@ CREATE TABLE IF NOT EXISTS `defis` (
   `resume` longtext NOT NULL,
   `competences_acquises` set('Optimisme','Confiance','Sociabilite','Empathie','Communication','Efficacite','Gestion_du_stress','Creativite','Audace','Motivation','Visualisation','Présence','Adaptabilite','Curiosite','Disponibilite') NOT NULL,
   `duree` int(11) NOT NULL,
+  `importance` int(11) NOT NULL,
+  `couleur` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `defis`
 --
 
-INSERT INTO `defis` (`id`, `nom`, `resume`, `competences_acquises`, `duree`) VALUES
-(1, 'Bienvenu!', 'Comme tu le sais, une entreprise est faite d\'allers et venues. Pour inclure tout le monde et faire en sorte que l\'ambiance de travail soit la plus seine possible, tu as deux semaines pour déjeuner avec un collègue qui est l\'entreprise depuis moins de 6 mois. Il se sentira valorisé et ce déjeuner sera l\'occasion pour vous deux de mieux vous connaitre.', 'Disponibilite', 10),
-(2, 'Bien joue!', 'Savoir relever les points positifs de son équipe et valoriser leur travail est une force et une grande source de motivation pour avancer. C\'est pourquoi, tu dois, lors de la prochaine réunion que tu animes, pendant les 10-15 premières minutes, énumérer l\'ensemble des bons points. Ceux qui ont permis de conclure un contrat, faire avancer une négociation, une progression significative dans un projet et bien d\'autres. Tous points positifs et valorisants le travail des autres est bon à être dit haut et fort! ', 'Motivation', 10),
-(3, 'Let\'s go out ', 'Pourquoi se cantonner à ses collègues de travail au travail? Rien de mieux que vous connaître sous un autre angle et dans un autre atmosphère que celui des locaux de travail. Une bonne ambiance et une relation sincère en dehors du lieu de travail est un grand facteur de réussite dans vos objectifs professionnels. Tu as 1 mois pour organiser une activité extérieure avec minimum 15 de tes collègues. Pour t\'aider tu trouveras ici quelques idées: afterwork dans un bar, escape game, cours de cuisine, cours d\'improvisation théatrale... ', 'Sociabilite', 20);
+INSERT INTO `defis` (`id`, `nom`, `resume`, `competences_acquises`, `duree`, `importance`, `couleur`) VALUES
+(1, 'Bienvenu!', 'Comme tu le sais, une entreprise est faite d\'allers et venues. Pour inclure tout le monde et faire en sorte que l\'ambiance de travail soit la plus seine possible, tu as deux semaines pour déjeuner avec un collègue qui est l\'entreprise depuis moins de 6 mois. Il se sentira valorisé et ce déjeuner sera l\'occasion pour vous deux de mieux vous connaitre.', 'Disponibilite', 10, 1, 'red'),
+(2, 'Bien joue!', 'Savoir relever les points positifs de son équipe et valoriser leur travail est une force et une grande source de motivation pour avancer. C\'est pourquoi, tu dois, lors de la prochaine réunion que tu animes, pendant les 10-15 premières minutes, énumérer l\'ensemble des bons points. Ceux qui ont permis de conclure un contrat, faire avancer une négociation, une progression significative dans un projet et bien d\'autres. Tous points positifs et valorisants le travail des autres est bon à être dit haut et fort! ', 'Motivation', 10, 0, 'green'),
+(3, 'Let\'s go out ', 'Pourquoi se cantonner à ses collègues de travail au travail? Rien de mieux que vous connaître sous un autre angle et dans un autre atmosphère que celui des locaux de travail. Une bonne ambiance et une relation sincère en dehors du lieu de travail est un grand facteur de réussite dans vos objectifs professionnels. Tu as 1 mois pour organiser une activité extérieure avec minimum 15 de tes collègues. Pour t\'aider tu trouveras ici quelques idées: afterwork dans un bar, escape game, cours de cuisine, cours d\'improvisation théatrale... ', 'Sociabilite', 20, 3, 'blue'),
+(5, 'yolo', 'bonjour', 'Disponibilite', 3, 1, 'red');
 
 -- --------------------------------------------------------
 
@@ -75,6 +78,7 @@ CREATE TABLE IF NOT EXISTS `informations` (
   `defis_realises` varchar(255) NOT NULL,
   `defis_en_cours` varchar(255) NOT NULL,
   `defis_non_realises` varchar(255) NOT NULL,
+  `defis_en_attente` varchar(255) NOT NULL,
   `entreprise` text NOT NULL,
   `equipe` int(11) NOT NULL,
   `type` set('employe','administrateur','manager') NOT NULL,
@@ -92,9 +96,9 @@ CREATE TABLE IF NOT EXISTS `informations` (
 -- Dumping data for table `informations`
 --
 
-INSERT INTO `informations` (`id`, `likes_recus`, `likes_distrib`, `defis_realises`, `defis_en_cours`, `defis_non_realises`, `entreprise`, `equipe`, `type`, `prenom`, `nom`, `competences`, `photo`, `username`, `password`, `competences_acquises`) VALUES
-(19, 12, 1, '3', '', '', 'ECE', 1, 'employe', 'Emmanuelle', 'Thiroloix', 'Adaptabilite', 'user.png', 'manouel', 'manouel', 'Disponibilite,Sociabilite,Disponibilite'),
-(20, 0, 30, '', '', '', 'ECE', 1, 'manager', 'Charlotte', 'Decary', 'Sociabilite', 'charlotte_decary.png', 'chacha', 'chacha', '');
+INSERT INTO `informations` (`id`, `likes_recus`, `likes_distrib`, `defis_realises`, `defis_en_cours`, `defis_non_realises`, `defis_en_attente`, `entreprise`, `equipe`, `type`, `prenom`, `nom`, `competences`, `photo`, `username`, `password`, `competences_acquises`) VALUES
+(19, 0, 1, '1,1,5', '', '1', '1,5,1,5', 'ECE', 1, 'employe', 'Emmanuelle', 'Thiroloix', '', 'user.png', 'manouel', 'manouel', 'Disponibilite'),
+(20, 0, 30, '', '', '', '', 'ECE', 1, 'manager', 'Charlotte', 'Decary', 'Sociabilite', 'charlotte_decary.png', 'chacha', 'chacha', '');
 
 -- --------------------------------------------------------
 
