@@ -12,14 +12,9 @@ require_once 'include/db.php';
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$_SESSION['auth']->id]);
       $defis=$req->fetch()->defis_realises; 
-if($defis!=''){
-    $defis_realises=explode(",", $defis);
-}
-else $defis_realises='';
+$defis_realises=explode(",", $defis);
  
-
-
- ?>
+?>
 
 <body>
 
@@ -37,53 +32,45 @@ else $defis_realises='';
                     <!--breadcrumbs end -->
                 </div>
             </div>
-            
             <div class="row">
-            <?php if($defis_realises!=''){
-                 foreach ($defis_realises as $def) :
-                 $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
-                 $req->execute([$def]);
-                 $defis=$req->fetch(); ?>
-
-            	<div class="col-lg-4">
+            	<div class="col-lg-12">
                     <section class="panel">
-                        <header class="panel-heading-defis">
-                        <tr><?php echo($defis->nom)?></tr>
+                        <header class="panel-heading">
+                            Liste de mes défis réalisés
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
                                 <thead>
-                               
-                               <center> <a class="displayed"><img src="images/award.png" alt=""></a> </center><br>
-                                    
-                                </thead>
-                               
-                                <tbody>
-                               
                                 <tr>
-                                    <td> Bravo! Vous avez amélioré votre compétence: <?php echo ($defis->competences_acquises)?> </td>
+                                    <th>Intitulé</th>
+                                    <th>Résumé</th>
+                                    <th>Compétence apportée</th>
+                                    <th>Durée (en J)</th>
                                 </tr>
+                                </thead>
+                                <tbody>
+                                <?php if($defis_realises!=''){
+                                    foreach ($defis_realises as $def) :
+                                        $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
+                                          $req->execute([$def]);
+                                          $defis=$req->fetch(); ?>
+                                <tr>
+                                    <td><?php echo($defis->nom)?></td>
                                 
+                                <td><?php echo($defis->resume)?></td>
+                                
+                                <td><?php echo($defis->competences_acquises)?></td>
+                               
+                                <td><?php echo($defis->duree)?></td>
+                                </tr>
+                                <?php endforeach;?>
+                                <?php }else{ echo("<td>Pas de défis réalisés</td>");}?>
                                 </tbody>
                             </table>
                         </div>
                     </section>
                 </div>
-                <?php endforeach;
-            }
-                else{?>
-                <div class="col-lg-4">
-                    <section class="panel">
-                        <header class="panel-heading-defis">
-                    
-                        <tr>
-                                       <td><a >Pas de compétences acquises</a></td>
-                                        </tr>
-</section>
-                </div>
-                <?php } ?>
             </div>
-           
         <!-- page end-->
         </section>
     </section>

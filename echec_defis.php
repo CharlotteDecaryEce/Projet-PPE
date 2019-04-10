@@ -21,6 +21,6 @@ $req=$pdo->prepare('UPDATE informations SET defis_non_realises=? WHERE id = ?')-
 $req=$pdo->prepare('UPDATE informations SET defis_en_cours=? WHERE id = ?')->execute(['',$_SESSION['auth']->id]);
 
 
-header('Location: algo_choix_defis.php');
+header('Location: defis_en_cours.php');
 exit();
 ?>
