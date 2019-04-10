@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:8889
--- Généré le :  mer. 10 avr. 2019 à 14:16
--- Version du serveur :  5.6.38
--- Version de PHP :  7.2.1
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mer. 10 avr. 2019 à 16:23
+-- Version du serveur :  5.7.24
+-- Version de PHP :  7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `PPE`
+-- Base de données :  `ppe`
 --
 
 -- --------------------------------------------------------
@@ -26,10 +28,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `competences`
 --
 
-CREATE TABLE `competences` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `competences`;
+CREATE TABLE IF NOT EXISTS `competences` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) DEFAULT NULL,
-  `importance` int(11) NOT NULL
+  `importance` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -38,14 +42,16 @@ CREATE TABLE `competences` (
 -- Structure de la table `defis`
 --
 
-CREATE TABLE `defis` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `defis`;
+CREATE TABLE IF NOT EXISTS `defis` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` text NOT NULL,
   `resume` longtext NOT NULL,
   `competences_acquises` set('Optimisme','Confiance','Sociabilite','Empathie','Communication','Efficacite','Gestion_du_stress','Creativite','Audace','Motivation','Visualisation','Présence','Adaptabilite','Curiosite','Disponibilite') NOT NULL,
   `duree` int(11) NOT NULL,
-  `importance` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `importance` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `defis`
@@ -68,7 +74,20 @@ INSERT INTO `defis` (`id`, `nom`, `resume`, `competences_acquises`, `duree`, `im
 (14, 'Un pour tous, tous pour un!', 'La motivation s\'inscrit dans un cercle de mobilisation! Soyez mobilisé, concentré et mettez toutes votre énergie au service de l\'équipe! Discutez avec chacun des objectifs a atteindre et FONCEZ!', 'Motivation', 5, 2),
 (15, 'Ambassadeur', 'Dress up! Pendant une journée de la semaine qui suit, vous devez porter un habil au couleur de votre entreprise et si possible un de votre entreprise! Tout est bienvenu, tee shirt, sweat shirt, pull, bonnet, tout! Soyez fier et portez haut les couleurs de votre entreprise!', 'Communication', 5, 4),
 (16, 'Investissez sur vous!', 'Le meilleure investiseement à faire.. c\'est sur vous! Vous ne trouverez pas plus rentable! Equipez vous de votre anti-stress le plus éfficace, une photo de famille dans votre portefeuille, une balle anti-stress, un repose poignet pour souris d\'odinateur et soulager votre poignet, un rubik\'s cube... Tout est bon pour laissez glisser le stress!', 'Gestion_du_stress', 10, 5),
-(17, 'Performance et rien d\'autre!', 'Travaillez avec des outils performants! Ne soyez pas decourage par les outils, logiciels, materiels avec lesquels vous travailler. N\'hesitez pas a aller voir votre manager et lui faire comprendre que vous etes a 100% mais qu\'il est primordial que vos outils de travail le soit tout autant! Dites lui dealement ce que vous voudriez, les raisons et les impacts! Il sera comprehensif et fera surement tout pour optimiser ce materiel... Une fois les changements faits.. plus d\'excuse.. vous devez etre le number one!', 'Efficacite', 20, 6);
+(17, 'Performance et rien d\'autre!', 'Travaillez avec des outils performants! Ne soyez pas decourage par les outils, logiciels, materiels avec lesquels vous travailler. N\'hesitez pas a aller voir votre manager et lui faire comprendre que vous etes a 100% mais qu\'il est primordial que vos outils de travail le soit tout autant! Dites lui dealement ce que vous voudriez, les raisons et les impacts! Il sera comprehensif et fera surement tout pour optimiser ce materiel... Une fois les changements faits.. plus d\'excuse.. vous devez etre le number one!', 'Efficacite', 20, 6),
+(18, 'Audace', 'qdlkfj', 'Audace', 10, 6),
+(19, 'curiosite2', 'sdfqsdf', 'Curiosite', 2, 4),
+(20, 'defi confiance', 'sdmlf,zemld,', 'Confiance', 6, 8),
+(21, 'Creativite', 'azeopfij', 'Creativite', 8, 9),
+(22, 'defi curiosite', 'azlekf,slfk,', 'Curiosite', 10, 6),
+(23, 'Optimisme defi', 'zergfezg', 'Optimisme', 30, 6),
+(24, 'Presence', 'pdslf,fzelkf,zemk,', 'Présence', 20, 4),
+(25, 'Visualisation defi', 'coucou cest chacha', 'Visualisation', 8, 2),
+(26, 'defi empathie', 'qsdfzsdf', 'Empathie', 8, 2),
+(27, 'Empathie2', 'mdokf,ezjf', 'Empathie', 3, 1),
+(28, 'Adaptabilite defi', 'sldfk,dsfkl,z', 'Adaptabilite', 6, 4),
+(29, 'Adaptabilite2', 'sfzrf', 'Adaptabilite', 7, 2),
+(30, 'defi presence', 'qsfkjqsnqksjnfmkqsjdfnmsqdkjln', 'Présence', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -76,8 +95,9 @@ INSERT INTO `defis` (`id`, `nom`, `resume`, `competences_acquises`, `duree`, `im
 -- Structure de la table `informations`
 --
 
-CREATE TABLE `informations` (
-  `id` int(10) NOT NULL,
+DROP TABLE IF EXISTS `informations`;
+CREATE TABLE IF NOT EXISTS `informations` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `likes_recus` int(11) NOT NULL,
   `likes_distrib` int(11) NOT NULL DEFAULT '0',
   `defis_realises` varchar(255) NOT NULL,
@@ -93,8 +113,9 @@ CREATE TABLE `informations` (
   `photo` varchar(100) NOT NULL DEFAULT 'user.png',
   `username` varchar(10) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `competences_acquises` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `competences_acquises` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `informations`
@@ -110,11 +131,13 @@ INSERT INTO `informations` (`id`, `likes_recus`, `likes_distrib`, `defis_realise
 -- Structure de la table `notifications`
 --
 
-CREATE TABLE `notifications` (
-  `id` int(10) NOT NULL,
+DROP TABLE IF EXISTS `notifications`;
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `texte` varchar(255) NOT NULL,
   `date` datetime(6) NOT NULL,
-  `type` enum('Ajout','Emploi') NOT NULL
+  `type` enum('Ajout','Emploi') NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -123,11 +146,13 @@ CREATE TABLE `notifications` (
 -- Structure de la table `relations`
 --
 
-CREATE TABLE `relations` (
-  `id` int(10) NOT NULL,
+DROP TABLE IF EXISTS `relations`;
+CREATE TABLE IF NOT EXISTS `relations` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `id_1` int(10) NOT NULL,
-  `id_2` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_2` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `relations`
@@ -137,74 +162,7 @@ INSERT INTO `relations` (`id`, `id_1`, `id_2`) VALUES
 (1, 7, 9),
 (2, 7, 12),
 (3, 7, 13);
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `competences`
---
-ALTER TABLE `competences`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `defis`
---
-ALTER TABLE `defis`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `informations`
---
-ALTER TABLE `informations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `notifications`
---
-ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `relations`
---
-ALTER TABLE `relations`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `competences`
---
-ALTER TABLE `competences`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `defis`
---
-ALTER TABLE `defis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT pour la table `informations`
---
-ALTER TABLE `informations`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT pour la table `notifications`
---
-ALTER TABLE `notifications`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `relations`
---
-ALTER TABLE `relations`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
