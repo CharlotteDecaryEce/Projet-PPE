@@ -80,7 +80,6 @@ else $defis_realises='';
                                        <td><a >Pas de compétences acquises</a></td>
                                         </tr>
 </section>
-</header>
                 </div>
                 <?php } ?>
             </div>
