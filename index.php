@@ -58,7 +58,8 @@ include("include/header.inc.php");
     <div class="container">
 
       <form class="form-signin" action="" method="POST">
-        <h2 class="form-signin-heading">Bienvenue sur Inuit !</h2>
+        <center><div class="form-signin-heading"><img src="images/logocon.png" alt=""></div></center>
+
         <div class="login-wrap">
           
             <div class="user-login-info">
@@ -75,13 +76,7 @@ include("include/header.inc.php");
                 <input type="text" class="form-control" name="username" placeholder="Identifiant" autofocus>
                 <input type="password" class="form-control" name="password" placeholder="Mot de passe">
             </div>
-            <label class="checkbox">
-                <input type="checkbox" name="remember" value="remember"> Mémoriser
-                <span class="pull-right">
-                    <a data-toggle="modal" href="#myModal"> Mot de passe oublié ?</a>
-
-                </span>
-            </label>
+        
             <button class="btn btn-lg btn-login btn-block" type="submit"> Brise la Glace ! </button>
 
             <center><div class="registration">

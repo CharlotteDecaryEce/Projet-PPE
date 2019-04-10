@@ -76,7 +76,7 @@ a,a:hover,a:focus {
     text-transform:uppercase;
     font-weight:300;
     font-family:'Open Sans',sans-serif;
-    border-bottom:10px solid #07234D;
+
 }
 .form-signin .checkbox {
     margin-bottom:14px;
@@ -105,7 +105,7 @@ a,a:hover,a:focus {
     margin-bottom:15px;
     border-radius:5px;
     -webkit-border-radius:5px;
-    border:1px solid #eaeaea;
+    border:1px solid #07234D;
     box-shadow:none;
     font-size:12px;
 }
@@ -466,7 +466,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     height:35px;
 }
 .dropdown-menu.extended.inbox li a,.dropdown-menu.extended.tasks-bar li a {
-    background:#f1f2f7;
+    background:#07234D;
     border-radius:5px;
     -webkit-border-radius:5px;
     padding:10px;
@@ -491,7 +491,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     padding:10px;
 }
 .dropdown-menu.extended li a:hover {
-    color:#32323a;
+    color:#07234D;
 }
 .dropdown-menu.tasks-bar .task-info .desc {
     font-size:13px;
