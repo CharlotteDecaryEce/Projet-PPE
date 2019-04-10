@@ -9,7 +9,7 @@
     <meta name="author" content="Emmanuelle Thiroloix, Baptiste Grobon, Charlotte Decary, Thibault Magnen, Raphael Guez">
     <link rel="shortcut icon" href="images/otari.png">
 
-    <title>Inuit</title>
+<title>Inuit : emerge from the ice</title>
 
 
 
