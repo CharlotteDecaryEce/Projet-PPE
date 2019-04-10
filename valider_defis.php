@@ -11,21 +11,19 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$_SESSION['auth']->id]);
       $moi=$req->fetch();
 
-      if($moi->competences_acquises!='')
-      {
-            if($competences_acquises!=''){
-                  $competence_acquise=$moi->competences_acquises.",".$defis->competences_acquises;
-            }
-      	else $competence_acquise=$defis->competences_acquises;
-      }
-      else{
-      	$competence_acquise=$defis->competences_acquises;
-      }
+$competenc_acquises='';
+
+if($moi->competences_acquises!=''){
+      $competence_acquise=$moi->competences_acquises.",".$defis->competences_acquises;
+}
+else $competence_acquise=$defis->competences_acquises;
 
 if($moi->competences_acquises!=''){
       $competenc_acquises=explode(',',$moi->competences_acquises);
 }
 else $competenc_acquises='';
+
+
 $compe='';
 $ok=1;
 $req=$pdo->prepare('SELECT competences FROM informations WHERE id = ?');
@@ -35,7 +33,7 @@ $req=$pdo->prepare('SELECT competences FROM informations WHERE id = ?');
 if($competenc_acquises!='')
 {
       foreach ($competenc_acquises as $c) {
-            if($c=!$defis->competences_acquises) {
+            if($c=!$defis->competences) {
                   if($compe!=''){
                         $compe=$compe.','.$c;
                   }
