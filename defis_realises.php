@@ -45,7 +45,7 @@ else $defis_realises='';
 
             	<div class="col-lg-4">
                     <section class="panel">
-                        <header class="panel-heading-defis">
+                        <header class="panel-heading">
                         <tr><?php echo($defis->nom)?></tr>
                         </header>
                         <div class="panel-body">
@@ -80,7 +80,7 @@ else $defis_realises='';
 
                                 <center> <a class="displayed"><img src="images/awards/stress.png" alt=""></a> </center>
 
-                                <?php  }elseif ($defis->competences_acquises='Creativite'){ ?>
+                                <?php  }elseif ($defis->competences_acquises=='Creativite'){ ?>
 
                                 <center> <a class="displayed"><img src="images/awards/creativite.png" alt=""></a> </center>
 
@@ -132,7 +132,7 @@ else $defis_realises='';
                 else{?>
                 <div class="col-lg-12">
                     <section class="panel">
-                        <header class="panel-heading-defis">
+                        <header class="panel-heading">
                     
                         <div class="row">
                        <div class="col-lg-9">

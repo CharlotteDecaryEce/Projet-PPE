@@ -22,14 +22,18 @@
 	      $req->execute([$_SESSION['auth']->id]);
 	      $moi=$req->fetch();
 		$array_id_defis_rea=explode(',',$moi->defis_realises);
-		$id_defis_non='';
+		$array_id_defis_att=explode(',',$moi->defis_en_attente);
+		$id_defis_non=array();
 
-		if($array_id_defis_rea!=''){
-			$id_defis_non=$array_id_defis_rea;
+		if($moi->defis_realises!=''){
+			foreach ($array_id_defis_rea as $def) {
+				$id_defis_non[]=$def;
+			}
 		}
 		if($moi->defis_en_attente!=''){
-			$array_id_defis_att=explode(',',$moi->defis_en_attente);
-			$id_defis_non=array_merge($array_id_defis_att);
+			foreach ($array_id_defis_att as $def) {
+				$id_defis_non[]=$def;
+			}
 		}
 		$taille_non=count($id_defis_non);
 		echo("///////  taille: ".$taille_non);
@@ -57,7 +61,12 @@
 			        //si il possède une compétence pas fini d'apprentissage, on lui donne celle qui à la plus haute priorité
 			        if($progression!=100)
 			        {
-		                  if($taille_non==1){
+			        		if($taille_non==1 ){
+				        		$req=$pdo->prepare('SELECT * FROM defis WHERE competences_acquises=? LIMIT 1');
+				                  $req->execute([$c]);
+				                  $defis_ok=$req->fetch();
+				        	}
+		                    if($taille_non==1 ){
 				        		$req=$pdo->prepare('SELECT * FROM defis WHERE (id NOT IN(?)) AND competences_acquises=? LIMIT 1');
 				                  $req->execute([$id_defis_non[0],$c]);
 				                  $defis_ok=$req->fetch();
@@ -84,6 +93,11 @@
 		        //si il n'a aucune compétence acquise en cours
 		        else {
 		        	//donner le defis associe à la plus haute priorité 
+		        	if($taille_non==0){
+		        		$req=$pdo->prepare('SELECT * FROM defis WHERE importance=? LIMIT 1');
+		                  $req->execute(['1']);
+		                  $defis_ok=$req->fetch();
+		        	}
 		        	if($taille_non==1){
 		        		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?) ORDER BY importance ASC LIMIT 1');
 		                  $req->execute([$id_defis_non[0]]);
@@ -137,7 +151,12 @@
 			        if($progression!=100)
 			        {
 			        	if($ok==0){
-			        		if($taille_non==1){
+			        		if($taille_non==0 ){
+				        		$req=$pdo->prepare('SELECT * FROM defis WHERE competences_acquises=? LIMIT 1');
+				                  $req->execute([$c]);
+				                  $defis_ok=$req->fetch();
+				        	}
+			        		if($taille_non==1 ){
 				        		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?) AND competences_acquises=? LIMIT 1');
 				                  $req->execute([$id_defis_non[0],$c]);
 				                  $defis_ok=$req->fetch();
@@ -160,6 +179,11 @@
 		                  	$id_defis_choisi=$defis_ok->id;
 			        	}
 			        	else if ($ok==1 && $comp_voulu==$c){
+			        		if($taille_non==0){
+			        			$req=$pdo->prepare('SELECT * FROM defis WHERE competences_acquises=? LIMIT 1');
+				                  $req->execute([$c]);
+				                  $defis_ok=$req->fetch();
+			        		}
 			        		if($taille_non==1){
 				        		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?) AND competences_acquises=? LIMIT 1');
 				                  $req->execute([$id_defis_non[0],$c]);

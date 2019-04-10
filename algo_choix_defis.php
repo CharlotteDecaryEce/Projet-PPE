@@ -7,19 +7,32 @@ session_start();
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$_SESSION['auth']->id]);
       $moi=$req->fetch();
-
 		$array_id_defis_rea=explode(',',$moi->defis_realises);
-		$id_defis_non='';
+		$array_id_defis_att=explode(',',$moi->defis_en_attente);
+		$id_defis_non=array();
 
-		if($array_id_defis_rea!=''){
-			$id_defis_non=$array_id_defis_rea;
+		if($moi->defis_realises!=''){
+			foreach ($array_id_defis_rea as $def) {
+				$id_defis_non[]=$def;
+			}
 		}
 		if($moi->defis_en_attente!=''){
-			$array_id_defis_att=explode(',',$moi->defis_en_attente);
-			$id_defis_non=array_merge($array_id_defis_att);
+			foreach ($array_id_defis_att as $def) {
+				$id_defis_non[]=$def;
+			}
 		}
+
+
+			foreach($array_id_defis_rea as $a){
+				echo("            ".$a);
+			}
+			echo("   //////////////////  defis_non=");
+			foreach($id_defis_non as $a){
+				echo("            ".$a);
+			}
 		$taille_non=count($id_defis_non);
 		echo("///////  taille: ".$taille_non);
+
 
 		$array_comp_acquises=explode(',', $moi->competences_acquises);
 		$id_defis_choisi=0;
@@ -64,6 +77,11 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
 				                  $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$c]);
 				                  $defis_ok=$req->fetch();
 				        	}
+				        	if($taille_non==5){
+				        		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?) AND competences_acquises=? LIMIT 1');
+				                  $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$c]);
+				                  $defis_ok=$req->fetch();
+				        	}
 		                  $id_defis_choisi=$defis_ok->id;
 			        }
 			     }
@@ -89,6 +107,11 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
 		        	if($taille_non==4){
 		        		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?) ORDER BY importance ASC LIMIT 1');
 		                  $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3]]);
+		                  $defis_ok=$req->fetch();
+		        	}
+		        	if($taille_non==5){
+		        		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?) ORDER BY importance ASC LIMIT 1');
+		                  $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4]]);
 		                  $defis_ok=$req->fetch();
 		        	}
 		        	
@@ -144,6 +167,11 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
 				                  $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$c]);
 				                  $defis_ok=$req->fetch();
 				        	}
+				        	if($taille_non==5){
+				        		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?) AND competences_acquises=? LIMIT 1');
+				                  $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$c]);
+				                  $defis_ok=$req->fetch();
+				        	}
 		                  	$id_defis_choisi=$defis_ok->id;
 			        	}
 			        	else if ($ok==1 && $comp_voulu==$c){
@@ -165,6 +193,11 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
 				        	if($taille_non==4){
 				        		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?) AND competences_acquises=? LIMIT 1');
 				                  $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$c]);
+				                  $defis_ok=$req->fetch();
+				        	}
+				        	if($taille_non==5){
+				        		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?) AND competences_acquises=? LIMIT 1');
+				                  $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$c]);
 				                  $defis_ok=$req->fetch();
 				        	}
 		                  	$id_defis_choisi=$defis_ok->id;
