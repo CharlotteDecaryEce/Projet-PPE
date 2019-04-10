@@ -150,7 +150,7 @@ $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
                else{?>
                <div class="col-lg-12">
                    <section class="panel">
-                       <header class="panel-heading-defis">
+                       <header class="panel-heading">
                        <div class="row">
                        <div class="col-lg-9">
                       

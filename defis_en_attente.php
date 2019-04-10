@@ -48,7 +48,7 @@ else $defis_en_attente='';
 
                 <div class="col-lg-4">
                     <section class="panel">
-                        <header class="panel-heading-defis">
+                        <header class="panel-heading">
                         <tr><?php echo($defis->nom)?> </tr>
                         </header>
                         <div class="panel-body">
@@ -148,7 +148,7 @@ else $defis_en_attente='';
                 else{?>
                 <div class="col-lg-4">
                     <section class="panel">
-                        <header class="panel-heading-defis">
+                        <header class="panel-heading">
                         <tr>
                             <td><a >Pas de compétences acquises</a></td>
                         </tr>
