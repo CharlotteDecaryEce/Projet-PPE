@@ -3,16 +3,16 @@ require_once 'include/functions.php';
 reconnect_from_cookie();
 $error="";
 if(isset($_SESSION['auth'])){
-    header('Location: tableau_de_bord.php');
+    header('Location: init_defis_en_attente.php');
     exit();
 }
 if(empty($_POST)){
  if(empty($_POST['username'])){
-  $_SESSION['flash']['danger'] = "Vous n'avez pas saisie d'identifiant !";
-  $error="Veuillez saisir un identifiant";
+  $_SESSION['flash']['danger'] = "Vous n'avez pas saisie de pseudo!";
+  $error="Veuillez saisir un pseudo ";
 }
 else if(empty($_POST['password'])){
-  $_SESSION['flash']['danger'] = "Vous n'avez pas saisie de mot de passe !";
+  $_SESSION['flash']['danger'] = "Vous n'avez pas saisie de mot de passe!";
   $error="Veuillez saisir un mot de passe";
 }
 }
@@ -32,7 +32,7 @@ if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){
               setcookie('remember', $user->id . '==' . $remember_token . sha1($user->id . 'ratonlaveurs'), time() + 60 * 60 * 24 * 7);
           }
           $_SESSION['flash']['danger'] ="";
-          header('Location: tableau_de_bord.php');
+          header('Location: init_defis_en_attente.php');
           exit();
       }else{
           $_SESSION['flash']['danger'] = 'Identifiant ou mot de passe incorrecte';
@@ -58,8 +58,7 @@ include("include/header.inc.php");
     <div class="container">
 
       <form class="form-signin" action="" method="POST">
-        <center><div class="form-signin-heading"><img src="images/logocon.png" alt=""></div></center>
-
+        <h2 class="form-signin-heading">Connecte toi !</h2>
         <div class="login-wrap">
           
             <div class="user-login-info">
@@ -73,17 +72,25 @@ include("include/header.inc.php");
                 <p> <?php if($error!=""){
                   echo ($error);
                 }?></p>
-                <input type="text" class="form-control" name="username" placeholder="Identifiant" autofocus>
+                <input type="text" class="form-control" name="username" placeholder="Pseudo" autofocus>
                 <input type="password" class="form-control" name="password" placeholder="Mot de passe">
             </div>
-        
-            <button class="btn btn-lg btn-login btn-block" type="submit"> Brise la Glace ! </button>
+            <label class="checkbox">
+                <input type="checkbox" name="remember" value="remember"> Mémoriser
+                <span class="pull-right">
+                    <a data-toggle="modal" href="#myModal"> Mot de passe oublié?</a>
 
-            <center><div class="registration">
+                </span>
+            </label>
+            <button class="btn btn-lg btn-login btn-block" type="submit"> Connexion </button>
+
+            <div class="registration">
+                Pas encore de compte?
                 <a class="" href="inscription.php">
                     Créer mon compte
                 </a>
             </div>
+
         </div>
 
           <!-- Modal -->
