@@ -1,6 +1,6 @@
 <?php
 
-$title="Mes défis en attente";
+$title="Mes défis en cours";
 require 'include/functions.php';
 include("include/header.inc.php"); 
 include("include/menu_haut.inc.php"); 
@@ -35,59 +35,143 @@ $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
                 </div>
             </div>
             <div class="row">
+            <?php if($defis_en_cours!=''){?>
             	<div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Mon défis en cours
+                        <tr><?php echo($defis_en_cours->nom)?> </tr>
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
                                 <thead>
-                                <div class="row">
-                                
-                                <tr>
-                                <div class="col-lg-3">
-                                    <th>Intitulé</th>
-                                    </div>
-                                    <div class="col-lg-2">
-                                    <th>Résumé</th>
-                                    </div>
-                                    <div class="col-lg-3">
-                                    <th>Compétence apportée</th>
-                                    </div>
-                                    <div class="col-lg-4">
-                                    <th>Durée (en jours)</th>
-                                    </div>
-                                    <div class="col-lg-4">
-                                    <th>Validation</th>
-                                    </div>
-                                    <div class="col-lg-4">
-                                    <th>Echec</th>
-                                    </div>
-                                </tr>
-                                </div>
+                                <?php  if ($defis_en_cours->competences_acquises=='Confiance'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/confiance.png" alt=""></a> </center>
+
+
+                                <?php  }elseif ($defis_en_cours->competences_acquises=='Optimisme'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/optimisme.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis_en_cours->competences_acquises=='Sociabilite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/sociabilite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis_en_cours->competences_acquises=='Empathie'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/empathie.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis_en_cours->competences_acquises=='Communication'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/communication.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis_en_cours->competences_acquises=='Efficacite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/efficacite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis_en_cours->competences_acquises=='Gestion_du_stress'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/stress.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis_en_cours->competences_acquises='Creativite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/creativite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis_en_cours->competences_acquises=='Audace'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/audace.png" alt=""></a> </center>
+
+                                <?php  } elseif ($defis_en_cours->competences_acquises=='Motivation'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/motivation.png" alt=""></a> </center>
+
+                                <?php   }elseif ($defis_en_cours->competences_acquises=='Visualisation'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/visualisation.png" alt=""></a> </center>
+                                <?php   }elseif ($defis_en_cours->competences_acquises=='Presence'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/presence.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis_en_cours->competences_acquises=='Adaptabilite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/adaptabilite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis_en_cours->competences_acquises=='Curiosite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/curiosite.png" alt=""></a> </center>
+
+                                <?php   }elseif ($defis_en_cours->competences_acquises=='Disponibilite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/disponibilite.png" alt=""></a> </center>
+                                <?php }   ?>
+
                                 </thead>
                                 <tbody>
-                                <?php if($defis_en_cours!=''){?>
-                                <td><?php echo($defis_en_cours->nom)?></td>
-                                
-                                <td><?php echo($defis_en_cours->resume)?></td>
-                                
-                                <td><?php echo($defis_en_cours->competences_acquises)?></td>
                                
-                                <td><?php echo($defis_en_cours->duree)?></td>
+                                <tr>
                                 
-                                <td> <a href=<?php echo("valider_defis.php?id_defis=".$defis_en_cours->id);?> type="button" class="btn btn-success">Succes</a> 
-                                </td>
-                                <td>  <a href=<?php echo("echec_defis.php?id_defis=".$defis_en_cours->id);?> type="button" class="btn btn-danger">Echec</a>
-                                </td>
-                            <?php }else{ echo("<td>Pas de défis en cours, <a href=\"defis_en_attente.php\">veuillez en sélectionner un</a></td>");}?>
+                                     <td><?php echo($defis_en_cours->resume)?></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo($defis_en_cours->competences_acquises)?></td>
+                               </tr>
+                               <tr>
+                                <td><?php echo($defis_en_cours->duree)?></td>
+                                </tr>
+                                
+                                <tr>
+                               <br>
+                               <td>
+                               <br>
+                               <br>
+                           <div class="row">
+
+                               <div class="col-lg-6">
+                               <a href=<?php echo("valider_defis.php?id_defis=".$defis_en_cours->id);?> type="button" class="btn btn-compose">J'ai réussi !</a>
+                               </div>
+                               <div class="col-lg-6">
+                               <a href=<?php echo("echec_defis.php?id_defis=".$defis_en_cours->id);?> type="button" class="btn btn-compose">Je veux changer de défi</a></center></td>
+                               </div>
+                           </div>
+                           </td>
+
+                               </tr>
+
+
+
                                 </tbody>
                             
                             </table>
                         </div>
                     </section>
                 </div>
+                <?php
+           }
+               else{?>
+               <div class="col-lg-12">
+                   <section class="panel">
+                       <header class="panel-heading-defis">
+                       <div class="row">
+                       <div class="col-lg-9">
+                      
+                           <h3 > Vous n'avez pas de defis en cours </h3>
+                      
+                       </div>
+                       <div class="col-lg-3">
+                      
+                           <a href="defis_en_attente.php" type="button" class="btn btn-compose">Trouver un défi!</a>
+                      
+
+                       </div>
+                       </div>
+                      
+                       </header>
+                   </section>
+                  
+               </div>
+               <?php } ?>
+
+
             </div>
         <!-- page end-->
         </section>

@@ -54,8 +54,70 @@ else $defis_en_attente='';
                         <div class="panel-body">
                             <table class="table table-striped">
                                 <thead>
-                                <center> <a class="displayed"><img src="images/award.png" alt=""></a> </center><br>
-                                </thead>
+                                <?php  if ($defis->competences_acquises=='Confiance'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/confiance.png" alt=""></a> </center>
+
+
+                                <?php  }elseif ($defis->competences_acquises=='Optimisme'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/optimisme.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Sociabilite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/sociabilite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Empathie'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/empathie.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Communication'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/communication.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Efficacite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/efficacite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Gestion_du_stress'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/stress.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises='Creativite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/creativite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Audace'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/audace.png" alt=""></a> </center>
+
+                                <?php  } elseif ($defis->competences_acquises=='Motivation'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/motivation.png" alt=""></a> </center>
+
+                                <?php   }elseif ($defis->competences_acquises=='Visualisation'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/visualisation.png" alt=""></a> </center>
+
+                                <?php   }elseif ($defis->competences_acquises=='Presence'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/presence.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Adaptabilite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/adaptabilite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Curiosite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/curiosite.png" alt=""></a> </center>
+
+                                <?php   }elseif ($defis->competences_acquises=='Disponibilite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/disponibilite.png" alt=""></a> </center>
+                                <?php }   ?>
+                                <br>
+
+                               </thead>
                                
                                 <tbody>
                                 <tr>
@@ -67,8 +129,14 @@ else $defis_en_attente='';
                                 <tr>
                                     <td> Durée: <?php echo ($defis->duree)?> </td>
                                 </tr>
+
                                 <tr>
-                                <?php if($moi->defis_en_cours==''){ echo("<a href=\"choisir_defis.php?id_def=".$defis->id." \"  type=\"button\" class=\"btn btn-success\">GO!</a>"); } ?>
+                                <td>
+                                <br>
+                                <center>
+                                <?php if($moi->defis_en_cours==''){ echo("<a href=\"choisir_defis.php?id_def=".$defis->id." \"  type=\"button\" class=\"btn btn-compose\">GO!</a>"); } ?>
+                                </center>
+                            </td>
                             </tr>
                                 </tbody>
                             </table>
