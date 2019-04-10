@@ -13,8 +13,9 @@ html {
     -webkit-font-smoothing: antialiased !important;
 }
 body {
-    color:#767676;
-    background:#f1f2f7;
+    color:#07234D;
+    background:#07234D;
+    background-image:url(images/connexion.jpg);
     font-family:'Open Sans',sans-serif;
     padding:0px !important;
     margin:0px !important;
@@ -33,16 +34,18 @@ a,a:hover,a:focus {
     outline:none;
 }
 ::selection {
-    background:#4a69bd;
-    color:#fff;
+    background:#07234D;
+    color:#07234D;
 }
 ::-moz-selection {
-    background:#4a69bd;
+    background:#07234D;
     color:#fff;
 }
 #container {
     width:100%;
     height:100%;
+    background:#07234D;
+    background-image:url(images/connexion.jpg);
     -webkit-transition:all .3s ease-in-out;
     -moz-transition:all .3s ease-in-out;
     -o-transition:all .3s ease-in-out;
@@ -50,8 +53,9 @@ a,a:hover,a:focus {
 }
 /*login page*/
 .login-body {
-    background:#32323A;
+    background:#07234D;
     background-size:cover;
+    background-image:url(images/connexion.jpg);
     width:100%;
     height:100%;
 }
@@ -59,7 +63,8 @@ a,a:hover,a:focus {
 .form-signin {
     max-width:330px;
     margin:100px auto;
-    background:#fff;
+    background:#07234D;;
+    background-image:url(images/connexion.jpg);
     border-radius:5px;
     -webkit-border-radius:5px;
 }
@@ -67,10 +72,11 @@ a,a:hover,a:focus {
     margin:0;
     padding:35px 15px;
     text-align:center;
-    background:#4a69bd;
+    background:#07234D;
+    background-image:url(images/connexion.jpg);
     border-radius:5px 5px 0 0;
     -webkit-border-radius:5px 5px 0 0;
-    color:#fff;
+    color:#07234D;
     font-size:18px;
     text-transform:uppercase;
     font-weight:300;
@@ -83,7 +89,7 @@ a,a:hover,a:focus {
 }
 .form-signin .checkbox {
     font-weight:normal;
-    color:#b6b6b6;
+    color:#07234D;
     font-weight:300;
     font-family:'Open Sans',sans-serif;
 }
@@ -109,8 +115,8 @@ a,a:hover,a:focus {
     font-size:12px;
 }
 .form-signin .btn-login {
-    background:#4a69bd;
-    color:#fff;
+    background:#07234D;
+    color:#07234D;
     text-transform:uppercase;
     font-weight:300;
     font-family:'Open Sans',sans-serif;
@@ -118,12 +124,12 @@ a,a:hover,a:focus {
 }
 .form-signin p {
     text-align:left;
-    color:#b6b6b6;
+    color:#07234D;
     font-size:16px;
     font-weight:300;
 }
 .form-signin a,.form-signin a:hover {
-    color:#4a69bd;
+    color:#07234D;
 }
 .form-signin a:hover {
     text-decoration:underline;
@@ -133,7 +139,7 @@ a,a:hover,a:focus {
     position:relative;
 }
 .user-login-info {
-    background:#eaeaec;
+    background-image:url(images/connexion.jpg);
     margin:-20px -20px 20px -20px;
     padding:20px;
 }

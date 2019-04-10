@@ -8,8 +8,8 @@ if(isset($_SESSION['auth'])){
 }
 if(empty($_POST)){
  if(empty($_POST['username'])){
-  $_SESSION['flash']['danger'] = "Vous n'avez pas saisie de pseudo!";
-  $error="Veuillez saisir un pseudo ";
+  $_SESSION['flash']['danger'] = "Vous n'avez pas saisie d'identifiant !";
+  $error="Veuillez saisir un identifiant ";
 }
 else if(empty($_POST['password'])){
   $_SESSION['flash']['danger'] = "Vous n'avez pas saisie de mot de passe!";
@@ -58,7 +58,7 @@ include("include/header.inc.php");
     <div class="container">
 
       <form class="form-signin" action="" method="POST">
-        <h2 class="form-signin-heading">Connecte toi !</h2>
+        <h2 class="form-signin-heading">Bienvenue sur Inuit</h2>
         <div class="login-wrap">
           
             <div class="user-login-info">
@@ -72,7 +72,7 @@ include("include/header.inc.php");
                 <p> <?php if($error!=""){
                   echo ($error);
                 }?></p>
-                <input type="text" class="form-control" name="username" placeholder="Pseudo" autofocus>
+                <input type="text" class="form-control" name="username" placeholder="Identifiant" autofocus>
                 <input type="password" class="form-control" name="password" placeholder="Mot de passe">
             </div>
             <label class="checkbox">
@@ -82,10 +82,10 @@ include("include/header.inc.php");
 
                 </span>
             </label>
-            <button class="btn btn-lg btn-login btn-block" type="submit"> Connexion </button>
+            <button class="btn btn-lg btn-login btn-block" type="submit"> Break the Ice ! </button>
 
             <div class="registration">
-                Pas encore de compte?
+                Pas encore de compte ?
                 <a class="" href="inscription.php">
                     Créer mon compte
                 </a>
