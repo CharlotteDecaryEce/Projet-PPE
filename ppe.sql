@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  mer. 10 avr. 2019 à 13:38
+-- Généré le :  mer. 10 avr. 2019 à 13:52
 -- Version du serveur :  5.6.38
 -- Version de PHP :  7.2.1
 
@@ -63,7 +63,9 @@ INSERT INTO `defis` (`id`, `nom`, `resume`, `competences_acquises`, `duree`, `im
 (9, 'Think it, Post it, Read it!', 'Ecrire sur des post it chaque vendredi 4 choses\r\npositives qui sont arrivees cette semaine! \r\nPetit sourire assure le Lundi \r\na votre retour au travail!', 'Optimisme', 20, 8),
 (10, 'Yes you can!', 'Decouvrez comment avoir confiance en vous en laissant les autres travailler... Le FEEDBACK! Prenez l\'habitude de demandez un retour a vos interlocuteurs lorsque vous faites une reeunion, un rendez vous, rendez un projet, un rapport, a la suite d\'un appel telephonique.. vous verez que vous etes tres bon, et l\'entendre... ca fait du bien! Relativisez, collectez les likes sur Inuit, gardez une bonne cadence de defis releves et peu à peu, vous serez confiant tel David face a Goliath!', 'Confiance', 10, 6),
 (11, 'On garde la peche !', 'Prenez un fruit que vous posez devant vous.\r\nPensez à une peche parfaitement mûre. \r\nLa couleur, la forme, la dimension … \r\nPrenez votre temps pour bien integrer \r\nces elements. \r\nObservez cette peche dans chaque détail. \r\nDe quelle couleur est-elle ? \r\nQuel est son parfum ? \r\nQue gout a-t-elle ? Est-elle juteuse?  \r\nGoutez-la et appreciez sa saveur.\r\nPuis, fermez les yeux et detendez-vous ! \r\nRememorez-vous le fruit \r\nen commencant par la pensee. \r\nNe forcez pas ! Essayez de vous rappeler !', 'Visualisation', 20, 11),
-(12, 'Free time!', 'Soyez clair et organise, n\'oubliez pas que votre journée sera principalement faite d\'imprevus! Sachez etre disponible et laxiste. Soyez ouvert d\'esprit et acceptez d\'aider un collegue, de lui donner du temps, d\'accueillir les nouveaux de la meilleure manière qu\'il soit! Etre disponible est une grande force au travail! Prouvez que vous en etes capable! C\'est une grande force que vous etes entrain d\'acquerir... Merci Inuit', 'Disponibilite', 10, 1);
+(12, 'Free time!', 'Soyez clair et organise, n\'oubliez pas que votre journée sera principalement faite d\'imprevus! Sachez etre disponible et laxiste. Soyez ouvert d\'esprit et acceptez d\'aider un collegue, de lui donner du temps, d\'accueillir les nouveaux de la meilleure manière qu\'il soit! Etre disponible est une grande force au travail! Prouvez que vous en etes capable! C\'est une grande force que vous etes entrain d\'acquerir... Merci Inuit', 'Disponibilite', 10, 1),
+(13, 'Cofee time', 'C\'est votre tournee! Vous avez une semaine pour, lors d\'une pause avec votre équipe, embarquer tout le monde pour prendre un cafe (offert par vous si c\'est payant)! Quoi de mieux qu\'une bonne pause cafe avec toute l\'equipe... Poroftez en pour ne pas forcement parler boulot mais vie quotidienne, prochaine vacances ou dire du mal de votre boss!', 'Sociabilite', 5, 3),
+(14, 'Un pour tous, tous pour un!', 'La motivation s\'inscrit dans un cercle de mobilisation! Soyez mobilisé, concentré et mettez toutes votre énergie au service de l\'équipe! Discutez avec chacun des objectifs a atteindre et FONCEZ!', 'Motivation', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -181,7 +183,7 @@ ALTER TABLE `competences`
 -- AUTO_INCREMENT pour la table `defis`
 --
 ALTER TABLE `defis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `informations`
