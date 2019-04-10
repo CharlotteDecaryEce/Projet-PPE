@@ -8,11 +8,11 @@ if(isset($_SESSION['auth'])){
 }
 if(empty($_POST)){
  if(empty($_POST['username'])){
-  $_SESSION['flash']['danger'] = "Vous n'avez pas saisie d'identifiant!";
+  $_SESSION['flash']['danger'] = "Vous n'avez pas saisi d'identifiant!";
   $error="Veuillez saisir un identifiant ";
 }
 else if(empty($_POST['password'])){
-  $_SESSION['flash']['danger'] = "Vous n'avez pas saisie de mot de passe!";
+  $_SESSION['flash']['danger'] = "Vous n'avez pas saisi de mot de passe!";
   $error="Veuillez saisir un mot de passe";
 }
 }
