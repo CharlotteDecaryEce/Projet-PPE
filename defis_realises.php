@@ -80,7 +80,7 @@ else $defis_realises='';
 
                                 <center> <a class="displayed"><img src="images/awards/stress.png" alt=""></a> </center>
 
-                                <?php  }elseif ($defis->competences_acquises='Creativite'){ ?>
+                                <?php  }elseif ($defis->competences_acquises=='Creativite'){ ?>
 
                                 <center> <a class="displayed"><img src="images/awards/creativite.png" alt=""></a> </center>
 
