@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  mer. 10 avr. 2019 à 13:52
+-- Généré le :  mer. 10 avr. 2019 à 14:16
 -- Version du serveur :  5.6.38
 -- Version de PHP :  7.2.1
 
@@ -65,7 +65,10 @@ INSERT INTO `defis` (`id`, `nom`, `resume`, `competences_acquises`, `duree`, `im
 (11, 'On garde la peche !', 'Prenez un fruit que vous posez devant vous.\r\nPensez à une peche parfaitement mûre. \r\nLa couleur, la forme, la dimension … \r\nPrenez votre temps pour bien integrer \r\nces elements. \r\nObservez cette peche dans chaque détail. \r\nDe quelle couleur est-elle ? \r\nQuel est son parfum ? \r\nQue gout a-t-elle ? Est-elle juteuse?  \r\nGoutez-la et appreciez sa saveur.\r\nPuis, fermez les yeux et detendez-vous ! \r\nRememorez-vous le fruit \r\nen commencant par la pensee. \r\nNe forcez pas ! Essayez de vous rappeler !', 'Visualisation', 20, 11),
 (12, 'Free time!', 'Soyez clair et organise, n\'oubliez pas que votre journée sera principalement faite d\'imprevus! Sachez etre disponible et laxiste. Soyez ouvert d\'esprit et acceptez d\'aider un collegue, de lui donner du temps, d\'accueillir les nouveaux de la meilleure manière qu\'il soit! Etre disponible est une grande force au travail! Prouvez que vous en etes capable! C\'est une grande force que vous etes entrain d\'acquerir... Merci Inuit', 'Disponibilite', 10, 1),
 (13, 'Cofee time', 'C\'est votre tournee! Vous avez une semaine pour, lors d\'une pause avec votre équipe, embarquer tout le monde pour prendre un cafe (offert par vous si c\'est payant)! Quoi de mieux qu\'une bonne pause cafe avec toute l\'equipe... Poroftez en pour ne pas forcement parler boulot mais vie quotidienne, prochaine vacances ou dire du mal de votre boss!', 'Sociabilite', 5, 3),
-(14, 'Un pour tous, tous pour un!', 'La motivation s\'inscrit dans un cercle de mobilisation! Soyez mobilisé, concentré et mettez toutes votre énergie au service de l\'équipe! Discutez avec chacun des objectifs a atteindre et FONCEZ!', 'Motivation', 5, 2);
+(14, 'Un pour tous, tous pour un!', 'La motivation s\'inscrit dans un cercle de mobilisation! Soyez mobilisé, concentré et mettez toutes votre énergie au service de l\'équipe! Discutez avec chacun des objectifs a atteindre et FONCEZ!', 'Motivation', 5, 2),
+(15, 'Ambassadeur', 'Dress up! Pendant une journée de la semaine qui suit, vous devez porter un habil au couleur de votre entreprise et si possible un de votre entreprise! Tout est bienvenu, tee shirt, sweat shirt, pull, bonnet, tout! Soyez fier et portez haut les couleurs de votre entreprise!', 'Communication', 5, 4),
+(16, 'Investissez sur vous!', 'Le meilleure investiseement à faire.. c\'est sur vous! Vous ne trouverez pas plus rentable! Equipez vous de votre anti-stress le plus éfficace, une photo de famille dans votre portefeuille, une balle anti-stress, un repose poignet pour souris d\'odinateur et soulager votre poignet, un rubik\'s cube... Tout est bon pour laissez glisser le stress!', 'Gestion_du_stress', 10, 5),
+(17, 'Performance et rien d\'autre!', 'Travaillez avec des outils performants! Ne soyez pas decourage par les outils, logiciels, materiels avec lesquels vous travailler. N\'hesitez pas a aller voir votre manager et lui faire comprendre que vous etes a 100% mais qu\'il est primordial que vos outils de travail le soit tout autant! Dites lui dealement ce que vous voudriez, les raisons et les impacts! Il sera comprehensif et fera surement tout pour optimiser ce materiel... Une fois les changements faits.. plus d\'excuse.. vous devez etre le number one!', 'Efficacite', 20, 6);
 
 -- --------------------------------------------------------
 
@@ -183,7 +186,7 @@ ALTER TABLE `competences`
 -- AUTO_INCREMENT pour la table `defis`
 --
 ALTER TABLE `defis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `informations`
