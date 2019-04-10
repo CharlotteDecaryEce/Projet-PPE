@@ -51,9 +51,69 @@ else $defis_realises='';
                         <div class="panel-body">
                             <table class="table table-striped">
                                 <thead>
-                               
-                               <center> <a class="displayed"><img src="images/award.png" alt=""></a> </center><br>
-                                    
+                                <?php  if ($defis->competences_acquises=='Confiance'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/confiance.png" alt=""></a> </center>
+
+
+                                <?php  }elseif ($defis->competences_acquises=='Optimisme'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/optimisme.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Sociabilite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/sociabilite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Empathie'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/empathie.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Communication'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/communication.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Efficacite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/efficacite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Gestion_du_stress'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/stress.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises='Creativite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/creativite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Audace'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/audace.png" alt=""></a> </center>
+
+                                <?php  } elseif ($defis->competences_acquises=='Motivation'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/motivation.png" alt=""></a> </center>
+
+                                <?php   }elseif ($defis->competences_acquises=='Visualisation'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/visualisation.png" alt=""></a> </center>
+
+                                <?php   }elseif ($defis->competences_acquises=='Presence'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/presence.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Adaptabilite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/adaptabilite.png" alt=""></a> </center>
+
+                                <?php  }elseif ($defis->competences_acquises=='Curiosite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/curiosite.png" alt=""></a> </center>
+
+                                <?php   }elseif ($defis->competences_acquises=='Disponibilite'){ ?>
+
+                                <center> <a class="displayed"><img src="images/awards/disponibilite.png" alt=""></a> </center>
+                                <?php }   ?>
+                                <br>
+
                                 </thead>
                                
                                 <tbody>
@@ -70,15 +130,26 @@ else $defis_realises='';
                 <?php endforeach;
             }
                 else{?>
-                <div class="col-lg-4">
+                <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading-defis">
                     
-                        <tr>
-                                       <td><a >Pas de compétences acquises</a></td>
-                                        </tr>
-</section>
+                        <div class="row">
+                       <div class="col-lg-9">
+                      
+                           <h3 > Vous n'avez réalisé encore aucun défi </h3>
+                      
+                       </div>
+                       <div class="col-lg-3">
+                      
+                           <a href="defis_en_attente.php" type="button" class="btn btn-compose">Trouver un défi!</a>
+                      
+
+                       </div>
+                       </div>
+
 </header>
+</section>
                 </div>
                 <?php } ?>
             </div>
