@@ -32,6 +32,14 @@
 <!--breadcrumbs end -->
 </div>
 </div>
+<div class="clock">
+<div class="wrap">
+<span class="hour"></span>
+<span class="minute"></span>
+<span class="second"></span>
+<span class="dot"></span>
+</div>
+</div>
 <div class="row">
 <div class="col-lg-12">
 <section class="panel">
