@@ -12,7 +12,10 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$_SESSION['auth']->id]);
       $moi=$req->fetch();
 $comp_acquises=$moi->competences_acquises;
-$array_comp_acquises=explode(',',$comp_acquises);
+if($comp_acquises!=''){
+    $array_comp_acquises=explode(',',$comp_acquises);
+}
+else $array_comp_acquises='';
 
 
 if(!empty($_POST)){
@@ -35,7 +38,11 @@ if(!empty($_POST)){
 }
 
 $array_id_defis_rea=$moi->defis_realises;
-$id_defis_rea=explode(',',$array_id_defis_rea);
+if($array_id_defis_rea!=''){
+    $id_defis_rea=explode(',',$array_id_defis_rea);
+}
+else{$id_defis_rea='';}
+
 
 ?>
 
@@ -87,7 +94,7 @@ $id_defis_rea=explode(',',$array_id_defis_rea);
                             <table class="table  table-hover general-table">
                                 <tbody>
                                     <?php 
-                                     if(!empty($array_comp_acquises)){
+                                     if($array_comp_acquises!=''){
                                      foreach($array_comp_acquises as $c): 
                                         //compter progression softskills
                                         $progression=0;

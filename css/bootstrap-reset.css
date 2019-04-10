@@ -13,6 +13,7 @@ a:hover {
     box-shadow: none;
 }
 
+
 .panel-heading {
     border-color:#eff2f7 ;
     font-size: 13px;
@@ -20,6 +21,16 @@ a:hover {
     background: #fafafa;
     text-transform: uppercase;
     padding: 15px;
+}
+
+.panel-heading-defis {
+    border-color:#eff2f7 ;
+    font-size: 13px;
+    font-weight: 400;
+    background: #fafafa;
+    text-transform: uppercase;
+    padding: 15px;
+    text-align: center;
 }
 
 .panel-title {
@@ -274,6 +285,11 @@ ul {
     color: #797979;
 }
 
+.panel-default > .panel-heading-defis {
+    background-color: #FFFFFF;
+    border-color: #DDDDDD;
+    color: #797979;
+}
 /*nav inverse*/
 
 .navbar-inverse {
