@@ -15,7 +15,12 @@ $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
       $req->execute([$mec->defis_en_cours]);
       $defis_en_cours=$req->fetch(); 
 
-
+$date_ech= strtotime($moi->date_ech_defis_en_cours);
+$date_actuel= date("Y-m-d");
+$date_actuel=strtotime($date_actuel);
+$stro=$date_actuel-$date_ech;
+$nbJours=round(($date_ech - $date_actuel)/(60*60*24)-1);
+$nbJours=$nbJours+1;
 
 ?>
 <body>
@@ -40,6 +45,7 @@ $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
                     <section class="panel">
                         <header class="panel-heading">
                         <tr><?php echo($defis_en_cours->nom)?> </tr>
+                        <tr><?php echo ("Il vous reste: ".$nbJours." jours"); ?> </tr>
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
