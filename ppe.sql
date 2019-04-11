@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  jeu. 11 avr. 2019 à 10:16
+-- Généré le :  jeu. 11 avr. 2019 à 10:44
 -- Version du serveur :  5.6.38
 -- Version de PHP :  7.2.1
 
@@ -106,19 +106,20 @@ CREATE TABLE `informations` (
   `photo` varchar(100) NOT NULL DEFAULT 'user.png',
   `username` varchar(10) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `competences_acquises` varchar(255) NOT NULL
+  `competences_acquises` varchar(255) NOT NULL,
+  `date_ech_defis_en_cours` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `informations`
 --
 
-INSERT INTO `informations` (`id`, `likes_recus`, `likes_distrib`, `defis_realises`, `defis_en_cours`, `defis_non_realises`, `defis_en_attente`, `entreprise`, `equipe`, `type`, `prenom`, `nom`, `competences`, `photo`, `username`, `password`, `competences_acquises`) VALUES
-(19, 12, 1, '5,3', '', '1', '2,4,5,,12,1', 'ECE', 1, 'employe', 'Emmanuelle', 'Thiroloix', 'Optimisme,Confiance,Sociabilite', 'emmanuelle.jpg', 'manouel', 'manouel', 'Gestion_du_stress,Sociabilite'),
-(20, 0, 30, '3', '3', '', '2,12,1,14,13', 'ECE', 1, 'manager', 'Charlotte', 'Decary', 'Optimisme,Confiance,Sociabilite,Empathie,Communication,Efficacite', 'charlotte_decary.png', 'chacha', 'chacha', 'Sociabilite'),
-(21, 4, 26, '5', '9', '', '1,4,10,12,2', 'ECE', 1, 'administrateur', 'Thibault', 'Magnen', 'Efficacité, motivation, disponibilité, Sociabilite, Audace', 'user8.png', 'thib', 'thib', 'Presence, Empathie'),
-(22, 10, 20, '2', '3', '', '11,8,6,5,15', 'ECE', 1, 'employe', 'Baptiste', 'Grobon', 'Confiance, visualisation, creativite, optimisme ', 'user.png', 'bapt', 'bapt', 'adaptabilite, Curiosite, Communication'),
-(23, 2, 28, '3', '1', '', '9,8,4,7', 'ECE', 1, 'employe', 'Raphael', 'Guez', 'Visualisation, Presence, Audace, Empathie, disponibilite', 'user7.png', 'raph', 'raph', 'Creativite, Motivation');
+INSERT INTO `informations` (`id`, `likes_recus`, `likes_distrib`, `defis_realises`, `defis_en_cours`, `defis_non_realises`, `defis_en_attente`, `entreprise`, `equipe`, `type`, `prenom`, `nom`, `competences`, `photo`, `username`, `password`, `competences_acquises`, `date_ech_defis_en_cours`) VALUES
+(19, 12, 1, '5,3', '', '1', '2,4,5,12,1', 'Equipements scientifiques', 1, 'employe', 'Emmanuelle', 'Thiroloix', 'Optimisme,Confiance,Sociabilite', 'emmanuelle.jpg', 'manouel', 'manouel', 'Gestion_du_stress,Sociabilite', NULL),
+(20, 0, 30, '3', '3', '', '2,12,1,14,13', 'Equipements scientifiques', 1, 'manager', 'Charlotte', 'Decary', 'Optimisme,Confiance,Sociabilite,Empathie,Communication,Efficacite', 'charlotte_decary.jpg', 'chacha', 'chacha', 'Sociabilite', NULL),
+(21, 4, 26, '5,9,14', '', '', '1,4,10,12,2,3', 'Equipements scientifiques', 1, 'administrateur', 'Thibault', 'Magnen', '', 'user8.png', 'thib', 'thib', 'Presence, Empathie,Optimisme,Motivation', NULL),
+(22, 10, 20, '2', '3', '', '11,8,6,5,15', 'Equipements scientifiques', 1, 'employe', 'Baptiste', 'Grobon', 'Confiance, visualisation, creativite, optimisme ', 'portrait.jpg', 'bapt', 'bapt', 'adaptabilite, Curiosite, Communication', NULL),
+(23, 2, 28, '3', '1', '', '9,8,4,7,1', 'Equipements scientifiques', 1, 'employe', 'Raphael', 'Guez', 'Visualisation, Presence, Audace, Empathie, disponibilite', 'user7.jpg', 'raph', 'raph', 'Creativite, Motivation', NULL);
 
 -- --------------------------------------------------------
 
