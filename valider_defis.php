@@ -82,9 +82,6 @@ $req=$pdo->prepare('UPDATE informations SET defis_realises=? WHERE id = ?')->exe
 $req=$pdo->prepare('UPDATE informations SET defis_en_cours=? WHERE id = ?')->execute(['',$_SESSION['auth']->id]);
 
 
-$date = date("Y-m-d");
-$req=$pdo->prepare('UPDATE informations SET date_ech_defis_en_cours=? WHERE id = ?')->execute([$date,$_SESSION['auth']->id]);
-
 
 header('Location: algo_choix_defis.php');
 exit();

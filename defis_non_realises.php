@@ -8,7 +8,9 @@ include("include/menu_gauche.inc.php");
 
 require_once 'include/db.php';
 
-      
+    $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
+      $req->execute([$_SESSION['auth']->id]);
+      $moi=$req->fetch();  
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$_SESSION['auth']->id]);
       $defis=$req->fetch()->defis_non_realises; 
@@ -30,7 +32,7 @@ else $defis_realises='';
                     <!--breadcrumbs start -->
                     <ul class="breadcrumb">
                         <li><a href="tableau_de_bord.php"><i class="fa fa-home"></i>Tableau de bord</a></li>
-                        <li class="active">Liste de mes défis réalisés</li>
+                        <li class="active">Liste de mes défis non réalisés</li>
                     </ul>
                     <!--breadcrumbs end -->
                 </div>
@@ -119,8 +121,15 @@ else $defis_realises='';
                                 <tbody>
                                
                                 <tr>
-                                    <td> Bravo! Vous avez amélioré votre compétence: <?php echo ($defis->competences_acquises)?> </td>
+                                    <td> Compétence non améliorée: <?php echo ($defis->competences_acquises)?> </td>
                                 </tr>
+                                <?php if($moi->defis_en_cours==''){?>
+                                <tr>
+                                    <div class="col-lg-6">
+                                       <a href=<?php echo("valider_defis.php?id_defis=".$defis->id);?> type="button_compose" class="btn btn-compose">Je veux réessayer!</a>
+                                    </div>
+                                </tr>
+                                <?php }?>
                                 
                                 </tbody>
                             </table>
@@ -137,19 +146,13 @@ else $defis_realises='';
                         <div class="row">
                        <div class="col-lg-9">
                       
-                           <h3 > Vous n'avez réalisé encore aucun défi </h3>
+                           <h3 > Vous n'avez encore aucun défis non réalisé: BRAVO! </h3>
                       
-                       </div>
-                       <div class="col-lg-3">
-                      
-                           <a href="defis_en_attente.php" type="button" class="btn btn-compose">Trouver un défi!</a>
-                      
-
                        </div>
                        </div>
 
-</header>
-</section>
+                </header>
+                </section>
                 </div>
                 <?php } ?>
             </div>
