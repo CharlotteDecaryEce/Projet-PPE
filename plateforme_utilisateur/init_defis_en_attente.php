@@ -236,7 +236,7 @@
 						$comp_voulu_ok=1;
 					}
 				}
-				foreach ($moi->competences_acquises as $mes_competence_acquises) {
+				foreach (explode(',',$moi->competences_acquises) as $mes_competence_acquises) {
 					if($mes_competence_acquises==$competence_du_defis){
 						//on regarde si la competence est bien en cours d'acquisition et non finie 
 						$progression=0;
