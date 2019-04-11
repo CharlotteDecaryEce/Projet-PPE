@@ -10,8 +10,10 @@ $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
 $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $req->execute([$_SESSION['auth']->id]);
       $moi=$req->fetch();
-      
-foreach (explode(',',$moi->defis_non_realises) as $def) {
+
+$def_non='';    
+if($moi->defis_non_realises!=''){
+      foreach (explode(',',$moi->defis_non_realises) as $def) {
       if($def!=$id_defis){
             if($def_non!='')
             {
@@ -19,7 +21,9 @@ foreach (explode(',',$moi->defis_non_realises) as $def) {
             }
             else $def_non=$def;
       }
+      }
 }
+
 
 //on enleve des defis en attente
 $req=$pdo->prepare('UPDATE informations SET defis_non_realises=? WHERE id = ?')->execute([$def_non,$_SESSION['auth']->id]);
