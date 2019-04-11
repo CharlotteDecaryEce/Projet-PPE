@@ -195,8 +195,7 @@ if($nbJours<0){
     </section>
     
 <?php
-    
-    include('include/right_side_bar.php');
+include('include/right_side_bar.php');
  include('include/js.inc.php'); ?>
 
 
