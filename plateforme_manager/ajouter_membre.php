@@ -79,7 +79,7 @@ else{
                     <!--breadcrumbs start -->
                     <ul class="breadcrumb">
                         <li><a href="tableau_de_bord.php"><i class="fa fa-home"></i> Accueil</a></li>
-                        <li><a href="ajouter_membre.php" class="active"> Informations personelles </a></li>
+                        <li><a href="ajouter_membre.php" class="active"> Ajouter membre </a></li>
                     </ul>
                     <!--breadcrumbs end -->
                 </div>
