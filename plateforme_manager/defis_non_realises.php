@@ -132,7 +132,7 @@ else $defis_realises='';
                                 
                                     <td><br>
                                     
-                                       <a href=<?php echo("valider_defis.php?id_defis=".$defis->id);?> type="button" class="btn btn-compose">Je veux réessayer!</a>
+                                       <a href=<?php echo("reessayer_defis.php?id_defis=".$defis->id);?> type="button" class="btn btn-compose">Je veux réessayer!</a>
                                    
 
                                 </td>
