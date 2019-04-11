@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 11 avr. 2019 à 16:42
--- Version du serveur :  5.7.24
--- Version de PHP :  7.2.14
+-- Host: 127.0.0.1:3306
+-- Generation Time: Apr 11, 2019 at 06:16 PM
+-- Server version: 5.7.23
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `ppe`
+-- Database: `ppe`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `competences`
+-- Table structure for table `competences`
 --
 
 DROP TABLE IF EXISTS `competences`;
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `competences` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `defis`
+-- Table structure for table `defis`
 --
 
 DROP TABLE IF EXISTS `defis`;
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `defis` (
 ) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `defis`
+-- Dumping data for table `defis`
 --
 
 INSERT INTO `defis` (`id`, `nom`, `resume`, `competences_acquises`, `duree`, `importance`) VALUES
@@ -92,7 +92,7 @@ INSERT INTO `defis` (`id`, `nom`, `resume`, `competences_acquises`, `duree`, `im
 -- --------------------------------------------------------
 
 --
--- Structure de la table `informations`
+-- Table structure for table `informations`
 --
 
 DROP TABLE IF EXISTS `informations`;
@@ -120,20 +120,20 @@ CREATE TABLE IF NOT EXISTS `informations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `informations`
+-- Dumping data for table `informations`
 --
 
 INSERT INTO `informations` (`id`, `likes_recus`, `likes_distrib`, `defis_realises`, `defis_en_cours`, `defis_non_realises`, `defis_en_attente`, `entreprise`, `equipe`, `type`, `prenom`, `nom`, `competences`, `photo`, `username`, `password`, `competences_acquises`, `date_ech_defis_en_cours`, `email`) VALUES
-(19, 12, 1, '3', '1', '3', '2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,', 'ECE', 1, 'employe', 'Emmanuelle', 'Thiroloix', '', 'emmanuelle.jpg', 'manouel', 'manouel', 'Motivation,Disponibilite,Sociabilite', '2019-04-21', 'emmanuelle.thiroloix@gmail.com'),
-(20, 0, 30, '3', '3', '', '2,12,1,14,13', 'ECE', 1, 'manager', 'Charlotte', 'Decary', 'Optimisme,Confiance,Sociabilite,Empathie,Communication,Efficacite', 'charlotte_decary.jpg', 'chacha', 'chacha', 'Sociabilite', NULL, 'charlottedecary@gmail.com'),
-(21, 4, 26, '5,9,14', '', '', '1,4,10,12,2,3', 'ECE', 1, 'administrateur', 'Thibault', 'Magnen', '', 'user8.png', 'thib', 'thib', 'Presence, Empathie,Optimisme,Motivation', NULL, 'thibault.magnen@edu.ece.fr'),
-(22, 10, 20, '2', '3', '', '11,8,6,5,15', 'ECE', 1, 'employe', 'Baptiste', 'Grobon', 'Confiance, visualisation, creativite, optimisme ', 'portrait.jpg', 'bapt', 'bapt', 'adaptabilite, Curiosite, Communication', NULL, 'baptiste.grobon@gmail.com'),
-(23, 2, 28, '3', '1', '', '9,8,4,7,1', 'ECE', 1, 'employe', 'Raphael', 'Guez', 'Visualisation, Presence, Audace, Empathie, disponibilite', 'user7.jpg', 'raph', 'raph', 'Creativite, Motivation', NULL, 'raphaelguez0@gmail.com');
+(19, 7, 24, '1,2,12,4', '', '3', '14,13,15,5,16', 'ECE', 1, 'employe', 'Emmanuelle', 'Thiroloix', '', 'emmanuelle.jpg', 'manouel', 'manouel', 'Disponibilite,Motivation,Communication', '2019-10-08', 'emmanuelle.thiroloix@gmail.com'),
+(20, 5, 26, '2,3,15', '', '12', '1,14,13,4,5', 'ECE', 1, 'manager', 'Charlotte', 'Decary', 'Efficacite,Gestion_du_stress,Motivation', 'charlotte_decary.jpg', 'chacha', 'chacha', 'Motivation,Sociabilite,Communication', '2019-04-16', 'charlottedecary@gmail.com'),
+(21, 5, 25, '3,12,1,13,5,15', '', '4', '2,14,16,6,17', 'ECE', 1, 'administrateur', 'Thibault', 'Magnen', '', 'user8.png', 'thib', 'thib', 'Sociabilite,Disponibilite,Gestion_du_stress,Communication', '2019-10-08', 'thibault.magnen@edu.ece.fr'),
+(22, 6, 25, '3,13,2,15', '', '12', '1,14,4,5,16', 'ECE', 1, 'employe', 'Baptiste', 'Grobon', '', 'portrait.jpg', 'bapt', 'bapt', 'Sociabilite,Motivation,Communication', '2019-04-16', 'baptiste.grobon@gmail.com'),
+(23, 3, 24, '1,14,2,6,17,24,25', '', '15,5,3', '12,13,4,16,9', 'ECE', 1, 'employe', 'Raphael', 'Guez', '', 'user7.jpg', 'raph', 'raph', 'Disponibilite,Motivation,Efficacite,Curiosite', '2019-05-21', 'raphaelguez0@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `notifications`
+-- Table structure for table `notifications`
 --
 
 DROP TABLE IF EXISTS `notifications`;
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `notifications` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `relations`
+-- Table structure for table `relations`
 --
 
 DROP TABLE IF EXISTS `relations`;
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `relations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `relations`
+-- Dumping data for table `relations`
 --
 
 INSERT INTO `relations` (`id`, `id_1`, `id_2`) VALUES
