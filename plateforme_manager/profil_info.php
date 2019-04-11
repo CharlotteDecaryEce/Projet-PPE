@@ -32,7 +32,8 @@ $like_a_distrib=$moi->likes_distrib;
                     <!--breadcrumbs start -->
                     <ul class="breadcrumb">
                         <li><a href="tableau_de_bord.php"><i class="fa fa-home"></i> Tableau de bord</a></li>
-                        <li class="active"></li>
+                        <li><a href="liste_connexion.php"> Liste de mes collegues</a></li>
+                        <li><a href=<?php echo("profil_info.php?id=".$mec->id);?> class="active"> <?php echo($mec->prenom." ".$mec->nom) ?> </a></li>
                     </ul>
                     <!--breadcrumbs end -->
                 </div>
