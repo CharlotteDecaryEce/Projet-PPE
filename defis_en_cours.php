@@ -21,6 +21,10 @@ $date_actuel=strtotime($date_actuel);
 $stro=$date_actuel-$date_ech;
 $nbJours=round(($date_ech - $date_actuel)/(60*60*24)-1);
 $nbJours=$nbJours+1;
+if($nbJours<0){
+  header('Location: echec_defis.php?id_defis='.$mec->defis_en_cours);
+    exit();
+}
 
 ?>
 <body>

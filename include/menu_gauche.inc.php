@@ -35,18 +35,21 @@
                 </ul>
             </li>
             <li class="sub-menu">
-                <a href="javascript:;" <?php if($page == "defis_en_cours.php" || $page=="defis_en_attente.php" || $page=="defis_realises.php"){echo 'class="active"';} ?>>
+                <a href="javascript:;" <?php if($page == "defis_en_cours.php" || $page=="defis_en_attente.php" || $page="defis_non_realises.php" || $page=="defis_realises.php"){echo 'class="active"';} ?>>
                     <i class="fa fa-signal"></i>
                     <span>Défis</span>
                 </a>
                 <ul class="sub">
-                    <li <?php if($page == "defis_en_cours.php" ){echo 'class="active"';} ?>><a href="defis_en_cours".php">Mes défis en cours</a></li>
+                    <li <?php if($page == "defis_en_cours.php" ){echo 'class="active"';} ?>><a href="defis_en_cours.php">Mes défis en cours</a></li>
                 </ul>
                 <ul class="sub">
                     <li <?php if($page == "defis_en_attente.php" ){echo 'class="active"';} ?>><a href="defis_en_attente.php">Mes défis en attente</a></li>
                 </ul>
                 <ul class="sub">
-                    <li <?php if($page == "defis_realises.php" ){echo 'class="active"';} ?>><a href="defis_realises".php">Mes défis réalisés</a></li>
+                    <li <?php if($page == "defis_realises.php" ){echo 'class="active"';} ?>><a href="defis_realises.php">Mes défis réalisés</a></li>
+                </ul>
+                <ul class="sub">
+                    <li <?php if($page == "defis_non_realises.php" ){echo 'class="active"';} ?>><a href="defis_non_realises.php">Mes défis non réalisés</a></li>
                 </ul>
             </li>
         </ul></div>        
