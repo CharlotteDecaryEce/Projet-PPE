@@ -40,7 +40,7 @@ else $defis_en_attente='';
             </div>
             
             <div class="row">
-            <?php if($defis_en_attente!=''){
+                <?php if($defis_en_attente!==''){
                  foreach ($defis_en_attente as $def) :
                  $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
                  $req->execute([$def]);
@@ -49,7 +49,7 @@ else $defis_en_attente='';
                 <div class="col-lg-4">
                     <section class="panel">
                         <header class="panel-heading">
-                        <tr><?php echo($defis->nom)?> </tr>
+                            <tr><?php echo($defis->nom)?> </tr>
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
@@ -120,31 +120,30 @@ else $defis_en_attente='';
                                </thead>
                                
                                 <tbody>
-                                <tr>
-                                    <td> <?php echo($defis->resume)?> </td>
-                                </tr> 
-                                <tr>
-                                    <td> Compétence: <?php echo ($defis->competences_acquises)?> </td>
-                                </tr>
-                                <tr>
-                                    <td> Durée: <?php echo ($defis->duree)?> </td>
-                                </tr>
-
-                                <tr>
-                                <td>
-                                <br>
-                                <center>
-                                <?php if($moi->defis_en_cours==''){ echo("<a href=\"choisir_defis.php?id_def=".$defis->id." \"  type=\"button\" class=\"btn btn-compose\">GO!</a>"); } ?>
-                                </center>
-                            </td>
-                            </tr>
+                                    <tr>
+                                        <td> <?php echo($defis->resume)?> </td>
+                                    </tr> 
+                                    <tr>
+                                        <td> Compétence: <?php echo ($defis->competences_acquises)?> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Durée: <?php echo ($defis->duree)?> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <br>
+                                            <center>
+                                            <?php if($moi->defis_en_cours==''){ echo("<a href=\"choisir_defis.php?id_def=".$defis->id." \"  type=\"button\" class=\"btn btn-compose\">GO!</a>"); } ?>
+                                            </center>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </section>
                 </div>
                 <?php endforeach;
-            }
+                }
                 else{?>
                 <div class="col-lg-4">
                     <section class="panel">
@@ -153,12 +152,10 @@ else $defis_en_attente='';
                             <td><a >Pas de compétences acquises</a></td>
                         </tr>
                         </header>
-                    </section>
-                    
+                    </section> 
                 </div>
                 <?php } ?>
             </div>
-           
         <!-- page end-->
         </section>
     </section>
