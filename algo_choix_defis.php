@@ -9,8 +9,9 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
       $moi=$req->fetch();
 		$array_id_defis_rea=explode(',',$moi->defis_realises);
 		$array_id_defis_att=explode(',',$moi->defis_en_attente);
+		$array_id_defis_non=explode(',',$moi->defis_non_realises);
 		$id_defis_non=array();
-
+$pas_ok=0;
 	if($moi->defis_realises!=''){
 		foreach ($array_id_defis_rea as $def) {
 			$id_defis_non[]=$def;
@@ -21,14 +22,12 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
 			$id_defis_non[]=$def;
 		}
 	}
-
-
-	foreach($array_id_defis_rea as $a){
-		echo("            ".$a);
+	if($moi->defis_non_realises!=''){
+		foreach ($array_id_defis_non as $def) {
+			$id_defis_non[]=$def;
+		}
 	}
-	foreach($id_defis_non as $a){
-		echo("            ".$a);
-	}
+
 	$taille_non=count($id_defis_non);
 
 	$array_comp_acquises=explode(',', $moi->competences_acquises);
@@ -140,7 +139,55 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
           $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$id_defis_non[5],$id_defis_non[6],$id_defis_non[7],$id_defis_non[8],$id_defis_non[9],$id_defis_non[10],$id_defis_non[11],$id_defis_non[12],$id_defis_non[13],$id_defis_non[14],$id_defis_non[15],$id_defis_non[16],$id_defis_non[17],$id_defis_non[18],$id_defis_non[19]]);
           $defis_ok=$req->fetchAll();
 	}
-
+	if($taille_non==21){
+		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY importance ASC');
+          $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$id_defis_non[5],$id_defis_non[6],$id_defis_non[7],$id_defis_non[8],$id_defis_non[9],$id_defis_non[10],$id_defis_non[11],$id_defis_non[12],$id_defis_non[13],$id_defis_non[14],$id_defis_non[15],$id_defis_non[16],$id_defis_non[17],$id_defis_non[18],$id_defis_non[19],$id_defis_non[20]]);
+          $defis_ok=$req->fetchAll();
+	}
+	if($taille_non==22){
+		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY importance ASC');
+          $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$id_defis_non[5],$id_defis_non[6],$id_defis_non[7],$id_defis_non[8],$id_defis_non[9],$id_defis_non[10],$id_defis_non[11],$id_defis_non[12],$id_defis_non[13],$id_defis_non[14],$id_defis_non[15],$id_defis_non[16],$id_defis_non[17],$id_defis_non[18],$id_defis_non[19],$id_defis_non[20],$id_defis_non[21]]);
+          $defis_ok=$req->fetchAll();
+	}
+	if($taille_non==23){
+		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY importance ASC');
+          $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$id_defis_non[5],$id_defis_non[6],$id_defis_non[7],$id_defis_non[8],$id_defis_non[9],$id_defis_non[10],$id_defis_non[11],$id_defis_non[12],$id_defis_non[13],$id_defis_non[14],$id_defis_non[15],$id_defis_non[16],$id_defis_non[17],$id_defis_non[18],$id_defis_non[19],$id_defis_non[20],$id_defis_non[21],$id_defis_non[22]]);
+          $defis_ok=$req->fetchAll();
+	}
+	if($taille_non==24){
+		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY importance ASC');
+          $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$id_defis_non[5],$id_defis_non[6],$id_defis_non[7],$id_defis_non[8],$id_defis_non[9],$id_defis_non[10],$id_defis_non[11],$id_defis_non[12],$id_defis_non[13],$id_defis_non[14],$id_defis_non[15],$id_defis_non[16],$id_defis_non[17],$id_defis_non[18],$id_defis_non[19],$id_defis_non[20],$id_defis_non[21],$id_defis_non[22],$id_defis_non[23]]);
+          $defis_ok=$req->fetchAll();
+	}
+	if($taille_non==25){
+		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY importance ASC');
+          $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$id_defis_non[5],$id_defis_non[6],$id_defis_non[7],$id_defis_non[8],$id_defis_non[9],$id_defis_non[10],$id_defis_non[11],$id_defis_non[12],$id_defis_non[13],$id_defis_non[14],$id_defis_non[15],$id_defis_non[16],$id_defis_non[17],$id_defis_non[18],$id_defis_non[19],$id_defis_non[20],$id_defis_non[21],$id_defis_non[22],$id_defis_non[23],$id_defis_non[24]]);
+          $defis_ok=$req->fetchAll();
+	}
+	if($taille_non==26){
+		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY importance ASC');
+          $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$id_defis_non[5],$id_defis_non[6],$id_defis_non[7],$id_defis_non[8],$id_defis_non[9],$id_defis_non[10],$id_defis_non[11],$id_defis_non[12],$id_defis_non[13],$id_defis_non[14],$id_defis_non[15],$id_defis_non[16],$id_defis_non[17],$id_defis_non[18],$id_defis_non[19],$id_defis_non[20],$id_defis_non[21],$id_defis_non[22],$id_defis_non[23],$id_defis_non[24],$id_defis_non[25]]);
+          $defis_ok=$req->fetchAll();
+	}
+	if($taille_non==27){
+		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY importance ASC');
+          $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$id_defis_non[5],$id_defis_non[6],$id_defis_non[7],$id_defis_non[8],$id_defis_non[9],$id_defis_non[10],$id_defis_non[11],$id_defis_non[12],$id_defis_non[13],$id_defis_non[14],$id_defis_non[15],$id_defis_non[16],$id_defis_non[17],$id_defis_non[18],$id_defis_non[19],$id_defis_non[20],$id_defis_non[21],$id_defis_non[22],$id_defis_non[23],$id_defis_non[24],$id_defis_non[25],$id_defis_non[26]]);
+          $defis_ok=$req->fetchAll();
+	}
+	if($taille_non==28){
+		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY importance ASC');
+          $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$id_defis_non[5],$id_defis_non[6],$id_defis_non[7],$id_defis_non[8],$id_defis_non[9],$id_defis_non[10],$id_defis_non[11],$id_defis_non[12],$id_defis_non[13],$id_defis_non[14],$id_defis_non[15],$id_defis_non[16],$id_defis_non[17],$id_defis_non[18],$id_defis_non[19],$id_defis_non[20],$id_defis_non[21],$id_defis_non[22],$id_defis_non[23],$id_defis_non[24],$id_defis_non[25],$id_defis_non[26],$id_defis_non[27]]);
+          $defis_ok=$req->fetchAll();
+	}
+	if($taille_non==29){
+		$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY importance ASC');
+          $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$id_defis_non[5],$id_defis_non[6],$id_defis_non[7],$id_defis_non[8],$id_defis_non[9],$id_defis_non[10],$id_defis_non[11],$id_defis_non[12],$id_defis_non[13],$id_defis_non[14],$id_defis_non[15],$id_defis_non[16],$id_defis_non[17],$id_defis_non[18],$id_defis_non[19],$id_defis_non[20],$id_defis_non[21],$id_defis_non[22],$id_defis_non[23],$id_defis_non[24],$id_defis_non[25],$id_defis_non[26],$id_defis_non[27],$id_defis_non[28]]);
+          $defis_ok=$req->fetchAll();
+	}
+	if($taille_non==30){
+		$pas_ok=1;
+	}
+if($pas_ok==0){
 	$array_id_defis_ok=array();
 	foreach ($defis_ok as $defis) {
 			$array_id_defis_ok[]=$defis->id;
@@ -245,7 +292,7 @@ $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
 	}
 	else $id_defis=$id_defis_choisi;
 	$req=$pdo->prepare('UPDATE informations SET defis_en_attente=? WHERE id = ?')->execute([$id_defis,$_SESSION['auth']->id]);
-		
+}
 header('Location: defis_en_cours.php');
 exit();
 

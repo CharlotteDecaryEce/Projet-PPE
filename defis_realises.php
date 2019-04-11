@@ -46,7 +46,10 @@ else $defis_realises='';
             	<div class="col-lg-4">
                     <section class="panel">
                         <header class="panel-heading">
-                        <tr><?php echo($defis->nom)?></tr>
+                            <center>
+                                
+                        <tr> <a><b><?php echo($defis->nom)?></a></b></tr>
+                 </center>
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
@@ -119,7 +122,7 @@ else $defis_realises='';
                                 <tbody>
                                
                                 <tr>
-                                    <td> Bravo! Vous avez amélioré votre compétence: <?php echo ($defis->competences_acquises)?> </td>
+                                    <td> Bravo! Vous avez amélioré votre compétence:<b> <?php echo ($defis->competences_acquises)?></b> </td>
                                 </tr>
                                 
                                 </tbody>
