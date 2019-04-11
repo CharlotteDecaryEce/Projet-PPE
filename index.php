@@ -23,17 +23,22 @@ if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){
     $user = $req->fetch();
     if(!empty($user->password)){
       if($_POST['password']== $user->password){
-        echo "oyhijkb";
-          $_SESSION['auth'] = $user;
-          $_SESSION['flash']['success'] = 'Vous êtes maintenant connecté';
-          if($_POST['remember']){
-              $remember_token = str_random(250);
-              $pdo->prepare('UPDATE informations SET remember_token = ? WHERE id = ?')->execute([$remember_token, $user->id]);
-              setcookie('remember', $user->id . '==' . $remember_token . sha1($user->id . 'ratonlaveurs'), time() + 60 * 60 * 24 * 7);
-          }
-          $_SESSION['flash']['danger'] ="";
-          header('Location: init_defis_en_attente.php');
-          exit();
+	          $_SESSION['auth'] = $user;
+	          $_SESSION['flash']['success'] = 'Vous êtes maintenant connecté';
+	          if($_POST['remember']){
+	              $remember_token = str_random(250);
+	              $pdo->prepare('UPDATE informations SET remember_token = ? WHERE id = ?')->execute([$remember_token, $user->id]);
+	              setcookie('remember', $user->id . '==' . $remember_token . sha1($user->id . 'ratonlaveurs'), time() + 60 * 60 * 24 * 7);
+	          }
+	          $_SESSION['flash']['danger'] ="";
+            if($user->type=='manager'){
+                header('Location: plateforme_manager\init_defis_en_attente.php');
+                exit();
+            }
+	          else {
+                header('Location: plateforme_utilisateur\init_defis_en_attente.php');
+                exit();
+            }
       }else{
           $_SESSION['flash']['danger'] = 'Identifiant ou mot de passe incorrecte';
            $error="Identifiant ou mot de passe incorrects";
