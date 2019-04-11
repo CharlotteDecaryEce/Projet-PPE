@@ -49,7 +49,9 @@ else $defis_en_attente='';
                 <div class="col-lg-4">
                     <section class="panel">
                         <header class="panel-heading">
-                            <tr><?php echo($defis->nom)?> </tr>
+                            <center>
+                            <tr><a><b><?php echo($defis->nom)?></a></b> </tr>
+                 </center>
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
@@ -124,10 +126,10 @@ else $defis_en_attente='';
                                         <td> <?php echo($defis->resume)?> </td>
                                     </tr> 
                                     <tr>
-                                        <td> Compétence: <?php echo ($defis->competences_acquises)?> </td>
+                                        <td> Compétence: <b><?php echo ($defis->competences_acquises)?> </b></td>
                                     </tr>
                                     <tr>
-                                        <td> Durée: <?php echo ($defis->duree)?> </td>
+                                        <td> Durée: <?php echo ($defis->duree)?> jours </td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -160,7 +162,8 @@ else $defis_en_attente='';
         </section>
     </section>
     
-<?php include('include/right_side_bar.php');
+<?php
+include('include/right_side_bar.php');
  include('include/js.inc.php'); ?>
 
 

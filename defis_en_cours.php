@@ -48,8 +48,15 @@ if($nbJours<0){
             	<div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                        <tr><?php echo($defis_en_cours->nom)?> </tr>
-                        <tr><?php echo ("Il vous reste: ".$nbJours." jours"); ?> </tr>
+                            <center>
+                        <tr><h2><?php echo($defis_en_cours->nom)?> </tr></h2></center>
+                        <center>
+                        <tr><?php echo ("Il vous reste: "); ?>
+                        <a><b>
+                        <?php echo ($nbJours. " jours");?></b></a>
+                
+                    </tr></center>
+
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
@@ -187,7 +194,9 @@ if($nbJours<0){
         </section>
     </section>
     
-<?php include('include/right_side_bar.php');
+<?php
+    
+    include('include/right_side_bar.php');
  include('include/js.inc.php'); ?>
 
 
