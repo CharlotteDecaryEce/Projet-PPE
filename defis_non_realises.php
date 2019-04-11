@@ -48,7 +48,9 @@ else $defis_realises='';
             	<div class="col-lg-4">
                     <section class="panel">
                         <header class="panel-heading">
-                        <tr><?php echo($defis->nom)?></tr>
+                            <center>
+                        <tr><a><b><?php echo($defis->nom)?></b></a></tr>
+                 </center>
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
@@ -121,13 +123,19 @@ else $defis_realises='';
                                 <tbody>
                                
                                 <tr>
-                                    <td> Compétence non améliorée: <?php echo ($defis->competences_acquises)?> </td>
+                                    <td> Compétence non améliorée: <b><?php echo ($defis->competences_acquises)?></b> </td>
                                 </tr>
+                                <br>
+                                
                                 <?php if($moi->defis_en_cours==''){?>
                                 <tr>
-                                    <div class="col-lg-6">
-                                       <a href=<?php echo("valider_defis.php?id_defis=".$defis->id);?> type="button_compose" class="btn btn-compose">Je veux réessayer!</a>
-                                    </div>
+                                
+                                    <td><br>
+                                    
+                                       <a href=<?php echo("valider_defis.php?id_defis=".$defis->id);?> type="button" class="btn btn-compose">Je veux réessayer!</a>
+                                   
+
+                                </td>
                                 </tr>
                                 <?php }?>
                                 
