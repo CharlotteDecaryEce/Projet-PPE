@@ -1399,6 +1399,7 @@ h3.timeline-title {
 }
 .timeline-desk .panel {
     margin-bottom:5px;
+     margin-top:5px;
 }
 .timeline-desk .album {
     margin-top:20px;
@@ -1421,7 +1422,7 @@ h3.timeline-title {
     padding:8px;
 }
 .timeline-item.alt .panel {
-    margin-left:0;
+    margin-left:45;
     margin-right:45px;
 }
 .mbot30 {
@@ -3396,11 +3397,11 @@ ul.clock-category li a i {
     padding-right:0;
 }
 ul.clock-category li a:hover,ul.clock-category li a.active {
-    color:#4a69bd !important;
+    color:#07234D !important;
     background:none !important;
 }
 ul.clock-category li a:hover i,ul.clock-category li a.active i {
-    color:#4a69bd !important;
+    color:#07234D !important;
 }
 .clock-row h1 {
     font-size:22px !important;

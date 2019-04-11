@@ -47,21 +47,20 @@
 <!--heure-->
 <div class="col-lg-4">
 <div class="profile-nav alt">
+<center>
 <section class="panel">
-<div class="panel-heading">
-<h3> DATE</h3>
 <p class="text-left">
 <form name="clock" onSubmit="0">
-<input type="text"  name="date" size="15" readonly="true" height="50" class="style">
+ <?php echo date('d/m/Y');  ?>
 </form>
 </p>
-</div>
 <ul id="clock">
 
 <iframe src="http://free.timeanddate.com/clock/i67zh98s/n195/szw110/szh110/hbw0/hfc399/cf100/hgr0/fav0/fiv0/mqcfff/mql15/mqw4/mqd80/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd/hsceee" frameborder="0" width="110" height="110"></iframe>
 </center>
 </ul>
 </section>
+</center>
 </div>
 </div>
 
@@ -80,11 +79,7 @@
 <!-- page start-->
 <div class="row">
 <div class="col-md-12">
-<!--breadcrumbs start -->
-<ul class="breadcrumb">
-<li class="active">Mon défis en cours</li>
-</ul>
-<!--breadcrumbs end -->
+
 </div>
 </div>
 <div class="row">
@@ -94,12 +89,6 @@
 <header class="panel-heading">
 <center>
 <tr><h2><?php echo($defis_en_cours->nom)?> </tr></h2></center>
-<center>
-<tr><?php echo ("Il vous reste: "); ?>
-<a><b>
-<?php echo ($nbJours. " jours");?></b></a>
-
-</tr></center>
 
 </header>
 <div class="panel-body">
@@ -185,15 +174,7 @@
 <td>
 <br>
 <br>
-<div class="row">
 
-<div class="col-lg-6">
-<a href=<?php echo("valider_defis.php?id_defis=".$defis_en_cours->id);?> type="button" class="btn btn-compose">J'ai réussi !</a>
-</div>
-<div class="col-lg-6">
-<a href=<?php echo("echec_defis.php?id_defis=".$defis_en_cours->id);?> type="button" class="btn btn-compose">Je veux changer de défi</a></center></td>
-</div>
-</div>
 </td>
 
 </tr>
