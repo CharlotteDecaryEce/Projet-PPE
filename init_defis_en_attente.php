@@ -42,6 +42,9 @@
 				$id_defis_non[]=$def;
 			}
 		}
+		if($moi->defis_en_cours!=''){
+			$id_defis_non[]=$moi->defis_en_cours;
+		}
 
 		foreach($id_defis_non as $a){
 			echo($a.',');
@@ -181,7 +184,6 @@
 			$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY importance ASC');
 	          $req->execute([$id_defis_non[0],$id_defis_non[1],$id_defis_non[2],$id_defis_non[3],$id_defis_non[4],$id_defis_non[5],$id_defis_non[6],$id_defis_non[7],$id_defis_non[8],$id_defis_non[9],$id_defis_non[10],$id_defis_non[11],$id_defis_non[12],$id_defis_non[13],$id_defis_non[14],$id_defis_non[15],$id_defis_non[16],$id_defis_non[17],$id_defis_non[18],$id_defis_non[19],$id_defis_non[20],$id_defis_non[21],$id_defis_non[22],$id_defis_non[23],$id_defis_non[24]]);
 	          $defis_ok=$req->fetchAll();
-	          $j=1;
 		}
 		if($taille_non==26){
 			$req=$pdo->prepare('SELECT * FROM defis WHERE id NOT IN(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY importance ASC');
