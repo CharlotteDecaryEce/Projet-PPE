@@ -45,24 +45,25 @@
 <center>
 <div class="row">
 <!--heure-->
+<center>
 <div class="col-lg-4">
 <div class="profile-nav alt">
+<center>
 <section class="panel">
-<div class="panel-heading">
-<h3> DATE</h3>
 <p class="text-left">
 <form name="clock" onSubmit="0">
-<input type="text"  name="date" size="15" readonly="true" height="50" class="style">
+ <?php echo date('d/m/Y');  ?>
 </form>
 </p>
-</div>
 <ul id="clock">
 
 <iframe src="http://free.timeanddate.com/clock/i67zh98s/n195/szw110/szh110/hbw0/hfc399/cf100/hgr0/fav0/fiv0/mqcfff/mql15/mqw4/mqd80/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd/hsceee" frameborder="0" width="110" height="110"></iframe>
 </center>
 </ul>
 </section>
+</center>
 </div>
+</center>
 </div>
 
 <!--<section id="main-content">
@@ -70,13 +71,18 @@
 
 <div class="row">-->
 
-</section>
-</section>
 
 
 
-<section id="main-content">
-<section class="wrapper">
+
+<div class ="row">
+<div class="col-lg-12">
+
+
+<section class="panel">
+
+<div class="panel-body">
+
 <!-- page start-->
 <div class="row">
 <div class="col-md-12">
@@ -89,6 +95,7 @@
 </div>
 <div class="row">
 <?php if($defis_en_cours!=''){?>
+
 <div class="col-lg-12">
 <section class="panel">
 <header class="panel-heading">

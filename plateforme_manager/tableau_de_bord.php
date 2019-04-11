@@ -108,20 +108,23 @@
 //PARTIE GRAPH
  
 $dataPoints = array(
-	array("label"=> "Disponibilité", "y"=> $disponibilité),
-    array("label"=> "Motivation", "y"=> $motivation),
+	
+    
 	array("label"=> "Sociabilité", "y"=> $sociabilite),
 	array("label"=> "Communication", "y"=> $communication),
 	array("label"=> "Gestion du stress", "y"=> $gestion_du_stress),
 	array("label"=> "Efficacité", "y"=> $efficacite),
 	array("label"=> "Creativité", "y"=> $creativite),
 	array("label"=> "Audace", "y"=> $audace),
-	array("label"=> "Optimisme", "y"=>$optimisme),
+    array("label"=> "Optimisme", "y"=>$optimisme),
+    array("label"=> "Disponibilité", "y"=> $disponibilité),
     array("label"=> "Confiance", "y"=> $confiance),
     array("label"=> "Visualisation", "y"=> $visualisation),
-	array("label"=> "Présence", "y"=> $presence),
+    array("label"=> "Présence", "y"=> $presence),
+    array("label"=> "Motivation", "y"=> $motivation),
 	array("label"=> "Empathie", "y"=> $empathie),
-	array("label"=> "Adaptabilité", "y"=> $adaptabilite),
+    array("label"=> "Adaptabilité", "y"=> $adaptabilite),
+    array("label"=> "Motivation", "y"=> $motivation),
 	array("label"=> "Curiosité", "y"=> $curiosite)
 );
 	
@@ -173,13 +176,6 @@ $dataPoints = array(
 
 <div class="row">-->
 
-</section>
-</section>
-
-
-
-<section id="main-content">
-<section class="wrapper">
 
 
 
