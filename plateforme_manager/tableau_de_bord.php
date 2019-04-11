@@ -13,7 +13,7 @@
      define('DB_USER','root');
      define('DB_PASS','root');
      
-     
+     //DEFIS EN COURS 
     require_once 'include/db.php';
     $req=$pdo->prepare('SELECT * FROM informations WHERE id = ?');
     $req->execute([$_SESSION['auth']->id]);
@@ -22,7 +22,111 @@
     $req=$pdo->prepare('SELECT * FROM defis WHERE id = ?');
     $req->execute([$mec->defis_en_cours]);
     $defis_en_cours=$req->fetch();
-    ?>
+
+
+    //recuperer le numéro de l'équipe du manager 
+    $num_equipe=$moi->equipe;
+
+    $req=$pdo->prepare('SELECT * FROM informations WHERE equipe =?');
+    $req->execute([$num_equipe]);
+    $equipe=$req->fetchAll();
+
+
+
+    $disponibilité='';
+    $motivation='';
+    $sociabilite='';
+    $communication='';
+    $gestion_du_stress='';
+    $efficacite='';
+    $creativite='';
+    $audace='';
+    $optimisme='';
+    $confiance='';
+    $visualisation='';
+    $presence='';
+    $empathie='';
+    $adaptabilite='';
+    $curiosite='';
+
+
+    foreach($equipe as $e):
+        foreach(explode(',',$e->defis_realises) as $defis):
+
+    
+             if ($defis=='1'|| $defis=='12' ){
+                 $disponibilité ++;
+             }
+             elseif ($defis =='2'|| $defis =='14' ){
+                $motivation ++;
+            }
+            elseif ($defis =='13'|| $defis =='3' ){
+                $sociabilite ++;
+            }
+            elseif ($defis =='4'|| $defis =='15' ){
+                $communication ++;
+            }
+            elseif ($defis =='5'|| $defis =='16' ){
+                $gestion_du_stress ++;
+            }
+            elseif ($defis =='6'|| $defis =='17' ){
+                $efficacite ++;
+            }
+            elseif ($defis =='7'|| $defis =='24' ){
+                $creativite ++;
+            }
+            elseif ($defis =='8'|| $defis =='28' ){
+                $audace ++;
+            }
+            elseif ($defis =='9'|| $defis =='26' ){
+                $optimisme ++;
+            }
+            elseif ($defis =='10'|| $defis =='30' ){
+                $confiance ++;
+            }
+            elseif ($defis =='11'|| $defis =='29' ){
+                $visualisation ++;
+            }
+            elseif ($defis =='19'|| $defis =='18' ){
+                $presence ++;
+            }
+            elseif ($defis =='20'|| $defis =='21' ){
+                $empathie ++;
+            }
+            elseif ($defis =='22'|| $defis =='31' ){
+                $adaptabilite ++;
+            }
+            elseif ($defis =='24'|| $defis =='25' ){
+                $curiosite ++;
+            }
+
+
+        endforeach;
+    endforeach;
+
+
+//PARTIE GRAPH
+ 
+$dataPoints = array(
+	array("label"=> "Disponibilité", "y"=> $disponibilité),
+    array("label"=> "Motivation", "y"=> $motivation),
+	array("label"=> "Sociabilité", "y"=> $sociabilite),
+	array("label"=> "Communication", "y"=> $communication),
+	array("label"=> "Gestion du stress", "y"=> $gestion_du_stress),
+	array("label"=> "Efficacité", "y"=> $efficacite),
+	array("label"=> "Creativité", "y"=> $creativite),
+	array("label"=> "Audace", "y"=> $audace),
+	array("label"=> "Optimisme", "y"=>$optimisme),
+    array("label"=> "Confiance", "y"=> $confiance),
+    array("label"=> "Visualisation", "y"=> $visualisation),
+	array("label"=> "Présence", "y"=> $presence),
+	array("label"=> "Empathie", "y"=> $empathie),
+	array("label"=> "Adaptabilité", "y"=> $adaptabilite),
+	array("label"=> "Curiosité", "y"=> $curiosite)
+);
+	
+?>
+
 
 
 <bodyonLoad="clock()">
@@ -76,8 +180,65 @@
 
 <section id="main-content">
 <section class="wrapper">
+
+
+
+
+<div class ="row">
+<div class="col-lg-12">
+
+
+<section class="panel">
+
+<div class="panel-body">
+
+
+<script>
+window.onload = function () {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title: {
+		text: "Les compétences les plus travaillées par mon équipe"
+	},
+	axisY: {
+		title: "Nombre de défis réalisés",
+		includeZero: false
+	},
+	data: [{
+		type: "column",
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>                    
+
+
+
+</div
+
+</section>
+
+</div>
+</div>
+
+
 <!-- page start-->
 <div class="row">
+
+
+
+
+
 <div class="col-md-12">
 
 </div>
