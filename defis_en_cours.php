@@ -21,6 +21,10 @@ $date_actuel=strtotime($date_actuel);
 $stro=$date_actuel-$date_ech;
 $nbJours=round(($date_ech - $date_actuel)/(60*60*24)-1);
 $nbJours=$nbJours+1;
+if($nbJours<0){
+  header('Location: echec_defis.php?id_defis='.$mec->defis_en_cours);
+    exit();
+}
 
 ?>
 <body>
@@ -44,8 +48,15 @@ $nbJours=$nbJours+1;
             	<div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                        <tr><?php echo($defis_en_cours->nom)?> </tr>
-                        <tr><?php echo ("Il vous reste: ".$nbJours." jours"); ?> </tr>
+                            <center>
+                        <tr><h2><?php echo($defis_en_cours->nom)?> </tr></h2></center>
+                        <center>
+                        <tr><?php echo ("Il vous reste: "); ?>
+                        <a><b>
+                        <?php echo ($nbJours. " jours");?></b></a>
+                
+                    </tr></center>
+
                         </header>
                         <div class="panel-body">
                             <table class="table table-striped">
