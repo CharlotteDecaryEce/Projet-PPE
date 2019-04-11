@@ -42,28 +42,26 @@ $like_a_distrib=$moi->likes_distrib;
               <div class="col-lg-12">
                 <section class="panel">
                   <header class="panel-heading">
-                    Informations personelles
+                    Informations personnelles
 
                   </header>
-                  <div class="panel-body">
+                  <div class="panel-body profile-information">
                     <div class="col-lg-6">
-                        
-                        <table class="table">
-                            <tr>
-                                  <img src=<?php echo("images/".$mec->photo)?> alt="">
-                                  <br>
-                                  <br>
-                            </tr>
-                        </table>
-
-                    </div>
+                            <div class="profile-pic text-center">
+                               <img src=<?php echo("images/".$mec->photo)?> alt=""/>
+                           </div>  <br>
+                           <center>
+                              <h1>  <?php echo($mec->prenom. " " .$mec->nom)?></h1> 
+                     </center>
+                   </div>
                     <div class="col-lg-6">
-                        <table class="table">
+                    <table class ="table">
+                       
                             <tr>
-                                <td><a href="#">NOM</a></td>
-                                <td>
-                                    <?php echo($mec->nom)?>
-                                </td>
+                                <td> <a href="#">NOM</a></td>
+                                
+                                  <td>  <?php echo($mec->nom)?> </td>
+                                
                                 
                             </tr>
                             <tr>
