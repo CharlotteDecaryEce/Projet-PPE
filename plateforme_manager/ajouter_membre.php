@@ -1,4 +1,6 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 $title="Ajouter un membre à l'équipe";
 require 'include/functions.php';
@@ -15,85 +17,49 @@ if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['nom']) && !emp
     require_once 'include/db.php';
         $pdo->prepare('INSERT INTO informations (username,nom,prenom,email,equipe,entreprise,type,likes_distrib,likes_recus,defis_realises,defis_en_cours,defis_en_attente,defis_non_realises,competences,competences_acquises,password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)')->execute([$_POST['username'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$moi->equipe,$moi->entreprise,'employe','30','0','','','','','','',$moi->entreprise]);
 
-    /////////////////////////////////////////// ENVOIE DU MAIL: ///////////////////////////////////////////////
- 
- 
-    ini_set("SMTP","ssl:smtp.gmail.com");
-    ini_set("smtp_port",465);// sachant que le port ressemblera sûrement à quelquechose comme 8025
+    ///////////////////////////////////////// ENVOIE DU MAIL ////////////////////////////////////////////////////////
 
-    $mail = $_POST['email']; // Déclaration de l'adresse de destination.
-    if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
-    {
-        $passage_ligne = "\r\n";
+    
+    require_once('phpmailer/src/PHPMailer.php');
+    require_once('phpmailer/src/OAuth.php');
+    require_once('phpmailer/src/Exception.php');
+    require_once('phpmailer/src/POP3.php');
+    require_once('phpmailer/src/SMTP.php');
+    $mail = new PHPMailer();
+    /* Open the try/catch block. */
+    try {
+            $mail->isSMTP();
+            $mail->Host     = "smtp.gmail.com";
+            // $mail->SMTPDebug = 1;
+            $mail->SMTPAuth = true;
+            $mail->Username = "emmanuelle.thiroloix@gmail.com";
+            $mail->Password = "Almarem01";
+            $mail->Port     = 587;
+
+       $mail->setFrom($moi->email, $moi->prenom." ".$moi->nom);
+
+       /* Add a recipient. */
+       $mail->addAddress($_POST['email'], $_POST['prenom']." ".$_POST['nom']);
+
+       /* Set the subject. */
+       $mail->Subject = 'Vous etes invite à tester INUIT!';
+
+       /* Set the mail message body. */
+       $mail->Body = "Bonjour ".$_POST['prenom']." ".$_POST['nom'].", \n\n Vous etes invite a tester notre nouvelle plateforme partenaire: INUIT. Cette derniere vous permettra de developper vos softskills de façon ludique! Bien evidemment votre vie privee, vos donnees, ainsi que vos performances seront gardees secretes!\nUn membre INUIT viendra vous expliquer son fonctionnement lors de la rencontre avec votre equipe. En attendant, decouvrez la plateforme grace a vos identifiants:\nPSEUDO: ".$_POST['username']."\nMOT DE PASSE: ".$moi->entreprise."\nBien evidemment vous pourrez modifier chacune de vos informations, ainsi que votre mot de passe, directement sur la plateforme!\n\nBonne journee.";
+
+       /* Finally send the mail. */
+       $mail->send();
     }
-    else
+    catch (Exception $e)
     {
-        $passage_ligne = "\n";
+       /* PHPMailer exception. */
+       $_SESSION['flash']['errors'] =$e->errorMessage();
     }
-    //=====Déclaration des messages au format texte et au format HTML.
-    $message_txt = "Bonjour ".$_POST['prenom']." ".$_POST['nom'].",".$passage_ligne.$passage_ligne."Vous êtes invité à tester notre nouvelle plateforme partenaire: INUIT. Cette dernière vous permettra de développer vos softskills de façon ludique! Bien évidemment votre vie privée, vos données, ainsi que vos performances seront gardées secrètes!".$passage_ligne."Un membre INUIT viendra vous expliquer son fonctionnement lors de la rencontre avec votre équipe. En attendant, découvrez la plateforme grâce à vos identifiants:".$passage_ligne."PSEUDO: ".$_POST['username'].$passage_ligne."MOT DE PASSE: ".$moi->entreprise.$passage_ligne."Bien évidemment vous pourrez modifier chacune de vos informations, ainsi que votre mot de passe, directement sur la plateforme!".$passage_ligne.$passage_ligne."Bonne journée.";
-    $message_html = "<html><head></head><body><b>Bonjour ".$_POST['prenom']." ".$_POST['nom'].",</b>".$passage_ligne.$passage_ligne."Vous êtes invité à tester notre nouvelle plateforme partenaire: INUIT. Cette dernière vous permettra de développer vos softskills de façon ludique! Bien évidemment votre vie privée, vos données, ainsi que vos performances seront gardées secrètes!".$passage_ligne."Un membre INUIT viendra vous expliquer son fonctionnement lors de la rencontre avec votre équipe. En attendant, découvrez la plateforme grâce à vos identifiants:".$passage_ligne."PSEUDO: ".$_POST['username'].$passage_ligne."MOT DE PASSE: ".$moi->entreprise.$passage_ligne."Bien évidemment vous pourrez modifier chacune de vos informations, ainsi que votre mot de passe, directement sur la plateforme!".$passage_ligne.$passage_ligne."Bonne journée.</body></html>";
-    //==========
-     
-    //=====Création de la boundary
-    $boundary = "-----=".md5(rand());
-    //==========
-     
-    //=====Définition du sujet.
-    $sujet = "Vous êtes invité à tester INUIT!";
-    //=========
-     
-    //=====Création du header de l'e-mail.
-    $header = "From: \"".$moi->nom."\"<".$moi->email.">".$passage_ligne;
-    $header.= "Reply-to: \"".$moi->nom."\"<".$moi->email.">".$passage_ligne;
-    $header.= "MIME-Version: 1.0".$passage_ligne;
-    $header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
-    //==========
-     
-    //=====Création du message.
-    $message = $passage_ligne."--".$boundary.$passage_ligne;
-    //=====Ajout du message au format texte.
-    $message.= "Content-Type: text/plain; charset=\"ISO-8859-1\"".$passage_ligne;
-    $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
-    $message.= $passage_ligne.$message_txt.$passage_ligne;
-    //==========
-    $message.= $passage_ligne."--".$boundary.$passage_ligne;
-    //=====Ajout du message au format HTML
-    $message.= "Content-Type: text/html; charset=\"ISO-8859-1\"".$passage_ligne;
-    $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
-    $message.= $passage_ligne.$message_html.$passage_ligne;
-    //==========
-    $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
-    $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
-    //==========
-     
-    //=====Envoi de l'e-mail.
-    mail($mail,$sujet,$message,$header);
-    //==========
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-   /* //require 'PHPmailer/PHPMailerAutoload.php';
-    require_once '/phpmailer/phpmailer.php';
-    require_once '../swiftmailer-master/lib/swift_required.php';
-
-    // Create the Transport
-        $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465))
-          ->setUsername('emmanuelle.thiroloix@gmail.com')
-          ->setPassword('Almarem01')
-        ;
-
-        // Create the Mailer using your created Transport
-        $mailer = new Swift_Mailer($transport);
-
-        // Create a message
-        $message = (new Swift_Message('Vous êtes invité à tester INUIT!'))
-          ->setFrom([$moi->email => $moi->nom.$moi->prenom])
-          ->setTo([$_POST['email'] => $_POST['nom'].$_POST['prenom']])
-          ->setBody("Bonjour ".$_POST['prenom']." ".$_POST['nom'].",".$passage_ligne.$passage_ligne."Vous êtes invité à tester notre nouvelle plateforme partenaire: INUIT. Cette dernière vous permettra de développer vos softskills de façon ludique! Bien évidemment votre vie privée, vos données, ainsi que vos performances seront gardées secrètes!".$passage_ligne."Un membre INUIT viendra vous expliquer son fonctionnement lors de la rencontre avec votre équipe. En attendant, découvrez la plateforme grâce à vos identifiants:".$passage_ligne."PSEUDO: ".$_POST['username'].$passage_ligne."MOT DE PASSE: ".$moi->entreprise.$passage_ligne."Bien évidemment vous pourrez modifier chacune de vos informations, ainsi que votre mot de passe, directement sur la plateforme!".$passage_ligne.$passage_ligne."Bonne journée.")
-          ;
-
-        // Send the message
-        $result = $mailer->send($message);*/
+    catch (\Exception $e)
+    {
+       /* PHP exception (note the backslash to select the global namespace Exception class). */
+       $_SESSION['flash']['errors'] = $e->getMessage();
+    }
 
     $_SESSION['flash']['success'] = "Votre membre à bien été ajouté";
     $_SESSION['flash']['errors'] = '';
