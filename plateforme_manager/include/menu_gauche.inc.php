@@ -14,10 +14,16 @@
                 </a>
             </li>
             <li class="sub-menu">
-                <a href="liste_connexion.php" <?php if($page == "liste_connexion.php"){echo 'class="active"';} ?>>
+                <a href="javascript:;" <?php if($page == "liste_connexion.php" || $page=="ajouter_membre.php" ){echo 'class="active"';} ?>>
                     <i class="fa fa-info-circle"></i>
                     <span>Mon réseau</span>
                 </a>
+                <ul class="sub">
+                    <li <?php if($page == "liste_connexion.php" ){echo 'class="active"';} ?>><a href="liste_connexion.php">Mon équipe</a></li>
+                </ul>
+                <ul class="sub">
+                    <li <?php if($page == "ajouter_membre.php" ){echo 'class="active"';} ?>><a href="ajouter_membre.php">Ajouter un membre</a></li>
+                </ul>
             </li>
             <li class="sub-menu">
                 <a href="javascript:;" <?php if($page == "modification_information.php" || $page=="modification_information_modif.php" || $page=="modification_information_competences.php"){echo 'class="active"';} ?>>
