@@ -183,7 +183,9 @@ $nbJours=$nbJours+1;
         </section>
     </section>
     
-<?php include('include/right_side_bar.php');
+<?php
+    
+    include('include/right_side_bar.php');
  include('include/js.inc.php'); ?>
 
 

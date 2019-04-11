@@ -158,7 +158,9 @@ else $defis_realises='';
         </section>
     </section>
     
-<?php include('include/right_side_bar.php');
+<?php
+    
+    include('include/right_side_bar.php');
  include('include/js.inc.php'); ?>
 
 
